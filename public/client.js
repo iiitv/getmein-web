@@ -6,13 +6,27 @@
 
 
 
-function ghAccountExists(username) {
-  let profile = "https://api.github.com/users/" + username;
-  if(getStatus(profile) == 200) {
-    return true;
-  }
-  return false;
-}
+$("#username").keyup(function(){
+  let userfield = $("#username");
+  let profile = "https://api.github.com/users/" + userfield.val();
+
+  fetch(profile)
+  .then((response) => {
+    response.json()
+    .then((data) => {
+      if ( data.message ) {
+        userfield.css({"color":"#f0506e", "border-color": "#f0506e"});
+        UIkit.tooltip("#username-cont").show();
+      } else {
+        userfield.css({"color":"#32d296", "border-color": "#32d296"});
+        UIkit.tooltip("#username-cont").hide();
+      }
+    });
+  })
+  .catch((e)=>{
+    console.log(e);
+  });
+});
 
 function getStatus(url) {
       var request = new XMLHttpRequest();
@@ -42,16 +56,6 @@ $.put = function(url, data, callback, type){
     contentType: type
   });
 }
-
-$("#username").keyup(function(){
-    let exists = ghAccountExists($("#username").val())
-    if(exists) {
-      console.log(exists)
-    }
-    else {
-      console.log(exists)
-    }
-});
 
 $(function() {
   $('form').submit(function(event) {
