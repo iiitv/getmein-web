@@ -1,0 +1,84 @@
+/* styles */
+/* called by your view template */
+
+/* You might want to try something fancier: */
+/* less: http://lesscss.org/ */
+
+*, .fontwa {
+  box-sizing: border-box;
+  font-family: 'Sunflower', sans-serif;
+}
+
+body {
+  font-family: helvetica, arial, sans-serif;
+  margin: 25px;
+}
+
+/* Scrollbar hatane ki Ninja Technique Ding² */
+body {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+p {
+  max-width: 600px;
+}
+
+form {
+  margin-bottom: 25px;
+  padding: 15px;
+/*   background-color: #f89551e6; */
+  display: inline-block;
+  width: 100%;
+  max-width: 340px;
+  border-radius: 3px;
+/*   box-shadow: 0px 0px white; */
+  transition-duration: 0.5s;
+}
+
+input {
+  display: block;
+  margin-bottom: 10px;
+  padding: 5px;
+  width: 100%;
+  border: 1px solid;
+  border-radius: 3px;
+/*   font-size: 12px; */
+}
+
+button {
+  font-size: 14px;
+  border-radius: 3px;
+  background-color: lightgrey;
+  border: 1px solid black;
+  box-shadow: 3px 3px white;
+  cursor: pointer;
+  transition-duration: 0.5s !important;
+}
+
+button:hover {
+  background-color: #f89551e6 !important;
+}
+
+button:active {
+  box-shadow: none;
+}
+
+li {
+  margin-bottom: 5px;
+}
+
+footer {
+  margin-top: 50px;
+}
+
+footer > a {
+  color: #BBBBBB;
+}
