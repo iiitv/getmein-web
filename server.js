@@ -5,6 +5,9 @@
 const express = require('express')
 const app = express()
 const axios = require('axios');
+var nodemailer = require('nodemailer');
+let mail = process.env.EMAIL;
+let password = process.env.PASSWORD;
 const token = process.env.SECRET
 const b13 = process.env.B13
 const b14 = process.env.B14
@@ -47,6 +50,31 @@ app.get("/add", (request, response) => {
   console.log(pref)
   let url = "https://api.github.com/teams/" + dict[pref] + "/memberships/" + request.query.username + "?access_token=" + token;
   console.log(url);
+  
+  var transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: mail,
+      pass: password,
+    }
+  });
+
+  var mailOptions = {
+    from: '"IIITV Coding Club" <codingclub@iiitv.ac.in>',
+    to: request.query.email,
+    subject: 'Invitation to join iiitv on GitHub',
+    text: 'Hi, ' + request.query.username + '\nTo join click on the link: '
+  };
+
+  transporter.sendMail(mailOptions, function(error, info){
+    if (error) {
+      console.log(error);
+    } else {
+      console.log('Email sent: ' + info.response);
+    }
+  });
+  
+  
   axios.put(url)
   .then(response => {
     console.log(response.data.url);
