@@ -63,7 +63,7 @@ app.get("/add", (request, response) => {
     from: '"IIITV Coding Club" <codingclub@iiitv.ac.in>',
     to: request.query.email,
     subject: 'Invitation to join iiitv on GitHub',
-    text: 'Hi, ' + request.query.username + '\nTo join click on the link: '
+    text: 'Hi, ' + request.query.username + '\nYou have been added to IIITV organisation on GitHub.'
   };
 
   transporter.sendMail(mailOptions, function(error, info){
