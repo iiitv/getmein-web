@@ -4,8 +4,6 @@
 // by default, you've got jQuery,
 // add other scripts at the bottom of index.html
 
-
-
 $("#username").keyup(function(){
   let userfield = $("#username");
   let profile = "https://api.github.com/users/" + userfield.val();
@@ -16,10 +14,10 @@ $("#username").keyup(function(){
     .then((data) => {
       if ( data.message ) {
         userfield.css({"color":"#f0506e", "border-color": "#f0506e"});
-        UIkit.tooltip("#username-cont").show();
+        $("#errorMsg").html("Username invalid.");
       } else {
         userfield.css({"color":"#32d296", "border-color": "#32d296"});
-        UIkit.tooltip("#username-cont").hide();
+        $("#errorMsg").html(" ");
       }
     });
   })
