@@ -82,3 +82,8 @@ footer {
 footer > a {
   color: #BBBBBB;
 }
+
+#errorMsg {
+  color: #f0506e;
+  font-size: 14px;
+}
