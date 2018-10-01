@@ -23,6 +23,10 @@ body {
   right: 0;
 }
 
+body, html {
+  overflow-y: scroll;
+}
+
 .bold {
   font-weight: bold;
 }
