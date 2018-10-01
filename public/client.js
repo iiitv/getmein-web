@@ -43,78 +43,78 @@ $.put = function(url, data, callback, type){
   if ( $.isFunction(data) ){
     type = type || callback,
     callback = data,
-    data = {}
+    data = {};
   }
  
   return $.ajax({
     url: url,
-    type: 'PUT',
+    type: "PUT",
     success: callback,
     data: data,
     contentType: type
   });
-}
+};
 
 $(function() {
-  $('form').submit(function(event) {
-    event.preventDefault()
-    var username = $('#username').val()  
-    var email = $('#email').val()
+  $("form").submit(function(event) {
+    event.preventDefault();
+    var username = $("#username").val();  
+    var email = $("#email").val();
     console.log(username);
     fetch(`/sendmail/${username}/${email}`)
     .then((res) => {
       console.log(res);
       if (res.status == 200) {
         UIkit.notification({
-          message: '<span uk-icon=\'icon: thumbs-up\'></span> A verification E-mail has been sent.',
-          status: 'success',
-          pos: 'top-center',
+          message: "<span uk-icon='icon: thumbs-up'></span> A verification E-mail has been sent.",
+          status: "success",
+          pos: "top-center",
           timeout: 2000
         });
       }
     })
     .catch((e) => {
       UIkit.notification({
-        message: '<span uk-icon=\'icon: warning\'></span> An error occured. Please try again later.',
-        status: 'danger',
-        pos: 'top-center',
+        message: "<span uk-icon='icon: warning'></span> An error occured. Please try again later.",
+        status: "danger",
+        pos: "top-center",
         timeout: 1000
       });
     });
-  })
+  });
 
-})
+});
 
 function showToast() {
-  var username = $('#username').val()
-  var email = $('#email').val()
+  var username = $("#username").val();
+  var email = $("#email").val();
   if(username === "" && email === "") {
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> email and github username are required fields.',
-      status: 'danger',
-      pos: 'top-center',
+      message: "<span uk-icon='icon: warning'></span> email and github username are required fields.",
+      status: "danger",
+      pos: "top-center",
       timeout: 1000
     });
   } else if(email === "") {
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> email is a required field.',
-      status: 'danger',
-      pos: 'top-center',
+      message: "<span uk-icon='icon: warning'></span> email is a required field.",
+      status: "danger",
+      pos: "top-center",
       timeout: 1000
     });
   } else if(username === "") {
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> username is a required field.',
-      status: 'danger',
-      pos: 'top-center',
+      message: "<span uk-icon='icon: warning'></span> username is a required field.",
+      status: "danger",
+      pos: "top-center",
       timeout: 1000
     });
   } else {
     UIkit.notification({
-      message: '<div uk-spinner></div> Processing your request.',
-      status: 'success',
-      pos: 'bottom-center',
+      message: "<div uk-spinner></div> Processing your request.",
+      status: "success",
+      pos: "bottom-center",
       timeout: 2000
-    })
+    });
   }
 }

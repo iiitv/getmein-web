@@ -6,7 +6,8 @@
   "version": "0.1.0",
   "description": "Portal to get an invite to IIITV Github organization",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint": "eslint ."
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -15,6 +16,10 @@
     "jquery": "^3.3.1",
     "nodemailer": "^4.6.8",
     "url-crypt": "^1.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^5.6.1",
+    "husky": "^1.1.0"
   },
   "engines": {
     "node": "9.x"
@@ -27,5 +32,10 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  }
 }
