@@ -87,3 +87,9 @@ footer > a {
   color: #f0506e;
   font-size: 14px;
 }
+
+.toggleTheme {
+  position: absolute;
+  top: 0;
+  right: 0;
+}
