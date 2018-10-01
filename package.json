@@ -6,7 +6,8 @@
   "version": "0.1.0",
   "description": "Portal to get an invite to IIITV Github organization",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "lint":"coala --files=**/*.js --bears=SpaceConsistencyBear --save"
   },
   "dependencies": {
     "axios": "^0.18.0",
