@@ -8,6 +8,10 @@ Previously, joining the IIITV Organization was a bit tideous - create an issue i
 Now, enter your Github username and E-mail ID, get in easily, and start contributing!
 
 ### For contributors : 
+#### Please install .editorconfig
+Editorconfig is a free plugin for most editors that helps keep the code style both simple and clean.
+
+Find out more at [https://editorconfig.org](Editorconfig.org). Pull requests will not be accepted if your code does not comply with the .editorconfig rules.
 #### To install the dependencies : 
 ``` sh
 $ npm install
