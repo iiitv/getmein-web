@@ -22,4 +22,6 @@ _A few sentences describing the change_
 - [ ] All new and existing tests passed.
 - [ ] Documentation
 
+**Fixes** #issue <!-- Add the issue no here -->
+
 <!-- Thanks For your PR -->
