@@ -7,10 +7,12 @@
   "description": "Portal to get an invite to IIITV Github organization",
   "scripts": {
     "start": "node server.js",
-    "lint":"coala --files=**/*.js --bears=SpaceConsistencyBear --save"
+    "lint": "./node_modules/.bin/eslint ./public/*.js *.js",
+    "lint:fix": "./node_modules/.bin/eslint ./public *.js --fix"
   },
   "dependencies": {
     "axios": "^0.18.0",
+    "eslint-cli": "^1.1.1",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
     "jquery": "^3.3.1",
@@ -28,5 +30,10 @@
     "node",
     "glitch",
     "express"
-  ]
+  ],
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.6.1",
+    "eslint-config-google": "^0.10.0"
+  }
 }
