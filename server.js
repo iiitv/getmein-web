@@ -109,7 +109,7 @@ const addMember = (data) => {
     let checkInsti = data.email.split('@')[1];
     if(checkInsti === "iiitv.ac.in" || checkInsti === "iiitvadodara.ac.in") {
       console.log("IIITian");
-      removeURL = "https://api.github.com/teams/" + dict[pref] + "/memberships/" + data.username + "?access_token=" + token;
+      removeURL = "https://api.github.com/teams/" + dict['outsider'] + "/memberships/" + data.username + "?access_token=" + token;
       axios.delete(removeURL)
       .then(response => {
         console.log(response.data.url);
