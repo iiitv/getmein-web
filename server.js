@@ -79,16 +79,8 @@ app.get("/sendmail/:username/:id", (request, response, next) => {
 // Verify the email id through the link, and add as member
 app.get('/verify/:base64', (request, response, next) => {
   const encryptedData = request.params.base64;
-  let data;
-  let pass = true;
   try {
-    data = urlcrypt.decryptObj(encryptedData);
-  } catch (e) {
-    response.status(400).send("Invalid Link.");
-    pass = false;
-  } 
-
-  if ( pass ) {
+    let data = urlcrypt.decryptObj(encryptedData);
     addMember(data)
     .then((status) => {
       response.status(status);
@@ -99,7 +91,10 @@ app.get('/verify/:base64', (request, response, next) => {
       response.status(400).send("Error occured. Please try again later.");
       response.end();
     });
+  } catch (e) {
+    response.status(400).send("Invalid Link.");
   }
+  
 });
 
 // Add the member as per their email id
