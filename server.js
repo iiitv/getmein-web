@@ -80,16 +80,8 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
 // Verify the email id through the link, and add as member
 app.get('/verify/:base64', (request, response, next) => {
   const encryptedData = request.params.base64;
-  let data;
-  let pass = true;
   try {
-    data = urlcrypt.decryptObj(encryptedData);
-  } catch (e) {
-    response.status(400).send('Invalid Link.');
-    pass = false;
-  }
-
-  if (pass) {
+    let data = urlcrypt.decryptObj(encryptedData);
     addMember(data)
       .then((status) => {
         response.status(status);
@@ -100,6 +92,8 @@ app.get('/verify/:base64', (request, response, next) => {
         response.status(400).send('Error occured. Please try again later.');
         response.end();
       });
+  } catch (e) {
+    response.status(400).send('Invalid Link.');
   }
 });
 
@@ -110,6 +104,15 @@ const addMember = (data) => {
     let checkInsti = data.email.split('@')[1];
     if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
       console.log('IIITian');
+      const removeURL = 'https://api.github.com/teams/' + dict['outsider'] + '/memberships/' + data.username + '?access_token=' + token;
+      axios.delete(removeURL)
+        .then(response => {
+          console.log(response.data.url);
+          resolve(204);
+        })
+        .catch(error => {
+          reject(error);
+        });
     } else {
       pref = 'outsider';
     }
