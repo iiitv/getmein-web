@@ -1,5 +1,7 @@
-
 # getmein-web
+
+[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+
 ### Getting into IIITV Open Source Organization just got easier!
 Go to http://getmein.glitch.me to get an invitation to join this organization.
 
