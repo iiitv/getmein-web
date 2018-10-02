@@ -4,7 +4,7 @@
 
 Go to http://getmein.glitch.me to get an invitation to join this organization.
 
-Previously, joining the IIITV Organization was a bit tideous - create an issue in the iiitv/getmein repository, and wait for the invite.
+Previously, joining the IIITV Organization was a bit tedious - create an issue in the iiitv/getmein repository and wait for the invite.
 
 Now, enter your Github username and E-mail ID, get in easily, and start contributing!
 
