@@ -19,13 +19,15 @@
     <!-- UIkit CSS -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css" />
     <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+     
 
     <!-- UIkit JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="/style.css">
   </head>
-  <body class="uk-section uk-section-secondary uk-margin-remove">
+  <body>
+      <div class="new">
     <header class="uk-text-center uk-align-center uk-width-1-1">
       <img src="https://avatars3.githubusercontent.com/u/9347727?s=150&v=4">
       <div class="fontwa uk-text-center uk-text-center uk-text-large uk-text-bold">
@@ -36,24 +38,26 @@
     </header>
 
     <main>
-      <div class="uk-container uk-align-center uk-text-center">
+      <div class="uk-container uk-center uk-text-center">
         <form class="uk-card uk-inline uk-legend uk-width-auto">
           <div class="uk-margin">
               <span id="errorMsg"> </span><br>
               <div class="uk-inline" id="username-cont">
                   <span class="uk-form-icon" uk-icon="icon: user"></span>
-                  <input class="uk-input" type="text" id="username" maxlength="100" placeholder="GitHub username" required>
+                  <input class="uk-input" type="text" id="username" maxlength="100" placeholder="GitHub username" required style="
+    border-radius: 20px!important;">
               </div>
           </div>    
           <div class="uk-margin">
               <div class="uk-inline">
                   <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                  <input class="uk-input" type="email" id="email" maxlength="100" placeholder="Email" required>
+                  <input class="uk-input" type="email" id="email" maxlength="100" placeholder="Email" required style="
+    border-radius: 20px!important;">
               </div>
           </div>
           <span class="uk-text-meta uk-text-warning uk-align-left">Please use your Institute's email address.</span>          
           <br>
-          <button class="uk-button uk-align-center uk-text-center uk-button-default" type="submit"  onclick="showToast()">Submit</button>
+          <button class="btn uk-button uk-align-center uk-text-center uk-button-default" type="submit"  onclick="showToast()">Submit</button>
         </form>
       </div>
       <div class="message uk-text-center uk-text-success">
@@ -61,13 +65,14 @@
       </div>
     </main>
     
-    <footer class="uk-align-center uk-text-center">
+    <footer class=" new uk-center uk-text-center">
       <hr class="uk-divider-icon">
       <a uk-tooltip="title: Github; pos: left" class="uk-icon-button uk-margin-small-right" href="https://github.com/iiitv" uk-icon="github"></a>      
       <a uk-tooltip="title: Like us on Facebook; pos: top" class="uk-icon-button uk-margin-small-right" href="https://fb.com/iiitvcc" uk-icon="facebook"></a>
       <a uk-tooltip="title: Follow us on Twitter; pos: top" class="uk-icon-button uk-margin-small-right" href="https://twitter.com/iiitvcc" uk-icon="twitter"></a>
       <a uk-tooltip="title: Drop an email; pos: right" class="uk-icon-button uk-margin-small-right" href="mailto:codingclub@iiitv.ac.in" uk-icon="mail"></a>
     </footer>
+          </div>
 
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
