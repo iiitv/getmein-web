@@ -1,19 +1,11 @@
-let isDark = true
-
-$( document ).ready(() => {
-  $('#toggleTheme').html('Light Mode')
-})
-
-$('#toggleTheme').on('click', () => {
-  if (isDark) {
+$('#toggleTheme').on('change', () => {
+  if ($('#toggleTheme').is(":checked")) {
     $('body').removeClass('uk-section-secondary')
     $('body').addClass('uk-section-muted')
-    $('#toggleTheme').html('Light Mode')
-    isDark = false
+    console.log('>>> [darkmode.js:6] light ')
   } else {
     $('body').removeClass('uk-section-muted')
     $('body').addClass('uk-section-secondary')
-    $('#toggleTheme').html('Dark Mode')
-    isDark = true
+    console.log('>>> [darkmode.js:10] dark ')
   }
 })

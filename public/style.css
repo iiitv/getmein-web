@@ -21,6 +21,7 @@ body {
   bottom: 0;
   left: 0;
   right: 0;
+  transition: all 1s;
 }
 
 .bold {
@@ -86,10 +87,4 @@ footer > a {
 #errorMsg {
   color: #f0506e;
   font-size: 14px;
-}
-
-.toggleTheme {
-  position: absolute;
-  top: 0;
-  right: 0;
 }
