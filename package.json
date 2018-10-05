@@ -7,7 +7,9 @@
   "description": "Portal to get an invite to IIITV Github organization",
   "scripts": {
     "start": "node server.js",
-    "lint":"coala --files=**/*.js --bears=SpaceConsistencyBear --save"
+    "lint:coala":"coala --files=**/*.js --bears=SpaceConsistencyBear --save"
+    "lint": "semistandard --verbose | snazzy",
+    "lint:fix": "semistandard --fix --verbose | snazzy"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -15,7 +17,26 @@
     "gh-account-exists": "^0.1.0",
     "jquery": "^3.3.1",
     "nodemailer": "^4.6.8",
+    "path": "^0.12.7",
     "url-crypt": "^1.2.1"
+  },
+  "devDependencies": {
+    "husky": "^1.1.0",
+    "semistandard": "^12.0.1",
+    "snazzy": "^8.0.0"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint"
+    }
+  },
+  "semistandard": {
+    "globals": [
+      "$",
+      "fetch",
+      "UIkit",
+      "XMLHttpRequest"
+    ]
   },
   "engines": {
     "node": "9.x"
