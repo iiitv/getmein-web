@@ -27,6 +27,6 @@ $ npm start
 ```
 
 <h1 align="center">
-<a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124021.svg"></img></a> <a href="mailto:codingclub@iiitvadodara.ac.in"><img width="50px" src="https://cdn2.iconfinder.com/data/icons/social-icons-color/512/gmail-512.png"></img></a>
+<a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></img></a> <a href="https://twitter.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124021.svg"></img></a> <a href="mailto:codingclub@iiitvadodara.ac.in"><img width="50px" src="https://cdn2.iconfinder.com/data/icons/social-icons-color/512/gmail-512.png"></img></a>
 </h1>
 <p align="center">Made With ❤ By IIITV Coding Club</p>
