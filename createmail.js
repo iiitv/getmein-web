@@ -1,71 +1,5 @@
 const createMail = function (username, email) {
-  return `
-        <!DOCTYPE html>
-        <html lang='en'>
-            <head>
-                <meta charset='UTF-8'>
-                <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-                <meta http-equiv='X-UA-Compatible' content='ie=edge'>
-                <title>Welcome to IIITV Organization</title>
-                <!-- Stylesheet -->
-                <style type='text/css'>
-                * {
-                    margin: 0px;
-                }
-                
-                #root {
-                    width: 100%;
-                }
-                
-                body {
-                    color: rgb(68, 68, 68);
-                    -webkit-font-smoothing: antialiased;
-                    text-shadow: rgba(0,0,0,.01) 0 0 1px;
-                    transition: 0.1s linear;
-                    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-                }
-                
-                #header {
-                    width: 100%;
-                }
-                
-                #brand-logo {
-                    width: 75px;
-                }
-                
-                #brand-logo-cont {
-                    width: max-content;
-                    margin: 0 auto;
-                }
-                
-                h2, p, h3, h4 {
-                    text-align: center;
-                }
-                
-                .divider {
-                    width: 45%;
-                    margin: 15px auto;
-                }
-                
-                main, footer {
-                    width: 60%;
-                    margin: 0 auto;
-                    padding: 10px;
-                    text-align: center;
-                }
-                
-                #verify {
-                    display: block;
-                    padding: 10px 20px;
-                    background-color: rgb(43, 150, 43);
-                    border: 0px;
-                    border-radius: 3px;
-                    color: white;
-                    font-weight: bold;
-                    font-size: 17px;
-                    margin: 20px auto;
-                    box-shadow: 3px 3px 20px 0px grey;
-<!DOCTYPE html>
+  return `<!DOCTYPE html>
 <html lang='en'>
 
 <head>
@@ -80,8 +14,8 @@ const createMail = function (username, email) {
         }
         
         .logo {
-            width: 200%;
-            height: 200%;
+            width: 30px;
+            height: 60px;
         }
         
         #root {
@@ -93,7 +27,7 @@ const createMail = function (username, email) {
             -webkit-font-smoothing: antialiased;
             text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
             transition: 0.1s linear;
-            font-family: -apple-system,system-ui,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+            font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
         }
         
         #header {
