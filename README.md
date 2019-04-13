@@ -26,6 +26,7 @@ $ npm install
 $ npm start
 ```
 
-<h1 align="center"><a href="https://www.facebook.com/iiitv.codingclub/"><img width="75px" src="https://scontent.fbom3-2.fna.fbcdn.net/v/t1.0-1/p200x200/21616257_1209956105817094_7242516145331503157_n.png?_nc_cat=0&oh=fe4af8e140f77b4284e1aa66c7c705d6&oe=5BCE16A8"></img></a>
+<h1 align="center">
+<a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124021.svg"></img></a> <a href="mailto:codingclub@iiitvadodara.ac.in"><img width="50px" src="https://cdn2.iconfinder.com/data/icons/social-icons-color/512/gmail-512.png"></img></a>
 </h1>
 <p align="center">Made With ❤ By IIITV Coding Club</p>
