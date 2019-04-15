@@ -3,11 +3,12 @@ root = true
 [*]
 end_of_line = lf
 insert_final_newline = true
-indent_style = space
-
-[*.{js,py}]
 charset = utf-8
+indent_style = space
 indent_size = 2
 
-[{package.json,.shrinkwrap.yaml}]
-indent_size = 2
+[{createmail.js}]
+indent_size = 4
+
+[*.{md}]
+indent_size = 4
