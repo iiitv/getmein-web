@@ -26,6 +26,21 @@ $ npm install
 $ npm start
 ```
 
+#### Configuration
+
+You can configure this application to use with your environment specified settings. Just copy these Environment variable to `.env` and make make necessary changes.
+Don't commit this `.env` file or remove it from `.gitignore` .
+
+#### Environment variables
+
+| VAR                | DESCRIPTION                                  | VALUES             | DEFAULT              |
+|--------------------|----------------------------------------------|--------------------|----------------------|
+| EMAIL_HOST         | Host for sending e-mail                      |      -             | `'smtp.gmail.com'`   |
+| EMAIL_SECURE       | The environment                              | `true`,`false`     |  `true`              |                             
+| PORT               | The port that will be used by getmein server |      -             |  `465`               |
+| POOL               | The environment                              | `true`,`false`     |  `true`              |
+
+
 <h1 align="center">
 <a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></img></a> <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></img></a> <a href="https://twitter.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124021.svg"></img></a> <a href="mailto:codingclub@iiitvadodara.ac.in"><img width="50px" src="https://cdn2.iconfinder.com/data/icons/social-icons-color/512/gmail-512.png"></img></a>
 </h1>
