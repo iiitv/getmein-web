@@ -20,6 +20,12 @@ const b17 = process.env.B17;
 const b18 = process.env.B18;
 const outs = process.env.OUTS;
 
+// Get transporter services
+const emailHost = process.env['EMAIL_HOST'] || 'smtp.gmail.com';
+const emailSecure = process.env['EMAIL_SECURE'] || true;
+const emailPort = process.env.PORT || 465;
+const emailPool = process.env.POOL || true;
+
 app.use(express.static('public'));
 
 app.get('/', (request, response) => {
@@ -47,10 +53,10 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
   const verificationurl = 'http://' + request.get('host') + '/verify/' + base64;
 
   var transporter = nodemailer.createTransport({
-    host: 'smtp.gmail.com',
-    secure: true,
-    port: '465',
-    pool: true,
+    host: emailHost,
+    secure: emailSecure,
+    port: emailPort,
+    pool: emailPool,
     auth: {
       user: mail,
       pass: password
