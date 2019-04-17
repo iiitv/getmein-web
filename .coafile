@@ -1,0 +1,4 @@
+[cli]
+bears = SpaceConsistencyBear
+files = **/*.js
+use_spaces = true

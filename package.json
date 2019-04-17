@@ -7,6 +7,7 @@
   "description": "Portal to get an invite to IIITV Github organization",
   "scripts": {
     "start": "node server.js",
+    "lint:coala":"coala --files=**/*.js --bears=SpaceConsistencyBear --save"
     "lint": "semistandard --verbose | snazzy",
     "lint:fix": "semistandard --fix --verbose | snazzy"
   },
