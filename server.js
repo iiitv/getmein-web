@@ -21,10 +21,10 @@ const b18 = process.env.B18;
 const outs = process.env.OUTS;
 
 // Get transporter services
-const emailHost = process.env.EMAIL_HOST;
-const emailSecure = process.env.EMAIL_SECURE;
-const emailPort = process.env.PORT;
-const emailPool = process.env.POOL;
+const emailHost = process.env['EMAIL_HOST'] || 'smtp.gmail.com';
+const emailSecure = process.env['EMAIL_SECURE'] || true;
+const emailPort = process.env.PORT || 465;
+const emailPool = process.env.POOL || true;
 
 app.use(express.static('public'));
 
