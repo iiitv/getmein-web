@@ -35,16 +35,16 @@ Don't commit this `.env` file or remove it from `.gitignore` .
 
 | VAR                | DESCRIPTION                                  | VALUES             | DEFAULT              |
 |--------------------|----------------------------------------------|--------------------|----------------------|
-| EMAIL              | User Email                                   | -                  |  -                   |
-| PASSWORD           | User's Email Paasword                        | -                  |  -                   |
-| SECRET             | The secret that will be used to sign in      | -                  |  -                   |
-| B13                | Dict of 2013 batch                           | -                  |  -                   |
-| B14                | Dict of 2014 batch                           | -                  |  -                   |
-| B15                | Dict of 2015 batch                           | -                  |  -                   |
-| B16                | Dict of 2016 batch                           | -                  |  -                   |
-| B17                | Dict of 2017 batch                           | -                  |  -                   |
-| B18                | Dict of 2018 batch                           | -                  |  -                   |
-| OUTS               | Dict of outsiders                            | -                  |  -                   |
+| EMAIL              | Organisation's Email                         | -                  |  -                   |
+| PASSWORD           | Organisation's Email Paasword                | -                  |  -                   |
+| SECRET             | This is a secret key used for cryptographic actions| -                  |  -                   |
+| B13                | Team ID of 2013 batch                        | -                  |  -                   |
+| B14                | Team ID of 2014 batch                        | -                  |  -                   |
+| B15                | Team ID of 2015 batch                        | -                  |  -                   |
+| B16                | Team ID of 2016 batch                        | -                  |  -                   |
+| B17                | Team ID of 2017 batch                        | -                  |  -                   |
+| B18                | Team ID of 2018 batch                        | -                  |  -                   |
+| OUTS               | Team ID of outsiders                         | -                  |  -                   |
 | EMAIL_HOST         | Host for sending e-mail                      |      -             | `'smtp.gmail.com'`   |
 | EMAIL_SECURE       | The environment                              | `true`,`false`     |  `true`              |
 | PORT               | The port that will be used by getmein server |      -             |  `465`               |
