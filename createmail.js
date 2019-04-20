@@ -131,7 +131,7 @@ const createMail = function(username, email) {
             <main>
                 <h3>We're glad to have you with us, ${username}!</h3>
                 <br>
-                <p>Click on the button below to verify you e-mail ID,<br>and you are good to go!</p>
+                <p>Click on the (Verify e-mail) button below to verify your Identity,<br>and you are good to go!</p>
                 <a href='${email}' id='verify'>Verify e-mail</a>
                 <p>With regards,<br>IIITV Open Source Organization</p>
             </main>
