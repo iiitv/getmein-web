@@ -1,5 +1,5 @@
-const createMail = function(username, email) {
-    return `
+const createMail = function (username, email) {
+  return `
     <!DOCTYPE html>
     <html lang='en'>
     
@@ -25,7 +25,15 @@ const createMail = function(username, email) {
                 -webkit-font-smoothing: antialiased;
                 text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
                 transition: 0.1s linear;
-                font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-family:
+                    -apple-system,
+                    system-ui,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    "Helvetica Neue",
+                    Arial,
+                    sans-serif;
             }
             
             #header {
@@ -156,6 +164,6 @@ const createMail = function(username, email) {
         </div>
     </body>
     
-    </html> `;
-};
-module.exports.createMail = createMail;
+    </html> `
+}
+module.exports.createMail = createMail
