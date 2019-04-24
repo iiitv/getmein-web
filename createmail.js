@@ -14,8 +14,6 @@ const createMail = function (username, email) {
                 margin: 0px;
             }
             
-
-            
             #root {
                 width: 100%;
             }
@@ -131,7 +129,7 @@ const createMail = function (username, email) {
         <div id='root'>
             <div id='header'>
                 <div id='brand-logo-cont'>
-                    <img id='brand-logo' src='https://user-images.githubusercontent.com/42460356/56201505-a7356f00-605e-11e9-9757-a18a93df08ec.png' alt='IIITV Organization Logo'>
+                    <img id='brand-logo' src='http://github.com/iiitv.png' alt='IIITV Organization Logo'>
                 </div>
                 <h2>Welcome to IIITV Open Source<br>Organization</h2><br>
             </div>
