@@ -1,10 +1,7 @@
 {
-  "//1": "describes your app and its dependencies",
-  "//2": "https://docs.npmjs.com/files/package.json",
-  "//3": "updating this file will download and update your packages",
   "name": "iiitv-getmein",
-  "version": "0.1.0",
-  "description": "Portal to get an invite to IIITV Github organization",
+  "version": "0.1.1",
+  "description": "Portal to get an invite to IIITV GitHub organization",
   "scripts": {
     "start": "node server.js",
     "lint": "eslint ./public/*.js *.js",
@@ -14,9 +11,10 @@
     "axios": "^0.18.0",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
-    "jquery": "^3.3.1",
+    "jquery": "^3.4.0",
     "nodemailer": "^4.6.8",
     "path": "^0.12.7",
+    "uikit": "^3.1.4",
     "url-crypt": "^1.2.1"
   },
   "devDependencies": {
@@ -38,7 +36,7 @@
     "node": "9.x"
   },
   "repository": {
-    "url": "https://glitch.com/edit/#!/my-glitch-app"
+    "url": "https://github.com/iiitv/getmein-web"
   },
   "license": "MIT",
   "keywords": [

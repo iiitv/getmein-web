@@ -1,8 +1,4 @@
-// client-side js
-// run by the browser each time your view template is loaded
-
-// by default, you've got jQuery,
-// add other scripts at the bottom of index.html
+import UIkit from 'uikit'
 
 $('#username').keyup(function () {
   const userfield = $('#username')
@@ -88,7 +84,7 @@ window.showToast = function () {
   const email = $('#email').val()
   if (username === '' && email === '') {
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> email and github username are required fields.',
+      message: '<span uk-icon=\'icon: warning\'></span> email and GitHub username are required fields.',
       status: 'danger',
       pos: 'top-center',
       timeout: 1000
