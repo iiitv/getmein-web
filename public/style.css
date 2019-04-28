@@ -12,6 +12,7 @@
 body {
   font-family: helvetica, arial, sans-serif;
   margin: 25px;
+    
 }
 
 /* Scrollbar hatane ki Ninja Technique Ding² */
@@ -53,7 +54,7 @@ input {
   padding: 5px;
   width: 100%;
   border: 1px solid;
-  border-radius: 3px;
+  border-radius: 20px!important;
 /*   font-size: 12px; */
 }
 
@@ -91,3 +92,11 @@ footer > a {
   color: #f0506e;
   font-size: 14px;
 }
+
+.new{
+    margin-top: 20px;
+    background: #f6f6f6;
+}
+
+
+
