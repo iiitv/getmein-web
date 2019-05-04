@@ -1,25 +1,36 @@
-import UIkit from 'uikit'
+// $('#email').keyup(function () {
+//   const email = $('#email')
+//   if (email.val()) {
+//     if (validateEmail(email.val())) {
+//       email.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+//     } else {
+//       email.css({ 'color': '#32d296', 'border-color': '#32d296' })
+//     }
+//   }
+// })
 
 $('#username').keyup(function () {
-  const userfield = $('#username')
-  const profile = 'https://api.github.com/users/' + userfield.val()
-
-  fetch(profile)
-    .then((response) => {
-      response.json()
-        .then((data) => {
-          if (data.message) {
-            userfield.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
-            $('#errorMsg').html('Username invalid.')
-          } else {
-            userfield.css({ 'color': '#32d296', 'border-color': '#32d296' })
-            $('#errorMsg').html(' ')
-          }
-        })
-    })
-    .catch((e) => {
-      console.log(e)
-    })
+  const username = $('#username')
+  if (username.val()) {
+    // http://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
+    const profile = 'http://aashutoshrathi.glitch.me/api/gh/' + username.val()
+    fetch(profile)
+      .then((response) => {
+        response.json()
+          .then((data) => {
+            if (data.message) {
+              username.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+            } else {
+              username.css({ 'color': '#32d296', 'border-color': '#32d296' })
+            }
+          })
+      })
+      .catch((e) => {
+        console.log(e)
+      })
+  } else {
+    username.css({ 'color': '#32d296', 'border-color': '#32d296' })
+  }
 })
 
 window.getStatus = function (url) {
@@ -60,6 +71,7 @@ $(function () {
       .then((res) => {
         console.log(res)
         if (res.status === 200) {
+          // eslint-disable-next-line
           UIkit.notification({
             message: '<span uk-icon=\'icon: thumbs-up\'></span> A verification E-mail has been sent.',
             status: 'success',
@@ -69,6 +81,7 @@ $(function () {
         }
       })
       .catch((e) => {
+        // eslint-disable-next-line
         UIkit.notification({
           message: '<span uk-icon=\'icon: warning\'></span> An error occured. Please try again later.',
           status: 'danger',
@@ -83,6 +96,7 @@ window.showToast = function () {
   const username = $('#username').val()
   const email = $('#email').val()
   if (username === '' && email === '') {
+    // eslint-disable-next-line
     UIkit.notification({
       message: '<span uk-icon=\'icon: warning\'></span> email and GitHub username are required fields.',
       status: 'danger',
@@ -90,6 +104,7 @@ window.showToast = function () {
       timeout: 1000
     })
   } else if (email === '') {
+    // eslint-disable-next-line
     UIkit.notification({
       message: '<span uk-icon=\'icon: warning\'></span> email is a required field.',
       status: 'danger',
@@ -97,6 +112,7 @@ window.showToast = function () {
       timeout: 1000
     })
   } else if (username === '') {
+    // eslint-disable-next-line
     UIkit.notification({
       message: '<span uk-icon=\'icon: warning\'></span> username is a required field.',
       status: 'danger',
@@ -104,6 +120,7 @@ window.showToast = function () {
       timeout: 1000
     })
   } else {
+    // eslint-disable-next-line
     UIkit.notification({
       message: '<div uk-spinner></div> Processing your request.',
       status: 'success',
@@ -112,3 +129,5 @@ window.showToast = function () {
     })
   }
 }
+
+// ToDo: Validate Email Function

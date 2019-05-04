@@ -19,12 +19,8 @@ body {
   right: 0;
 }
 
-.bold {
-  font-weight: bold;
-}
-
 form {
-  margin-bottom: 25px;
+  margin-bottom: 1.75rem;
   padding: 15px;
   display: inline-block;
   width: 100%;
@@ -35,19 +31,11 @@ form {
 
 input {
   display: block;
-  margin-bottom: 10px;
-  padding: 5px;
   width: 100%;
-  border: 1rem solid;
-  border-radius: 3px;
-  /*   font-size: 12px; */
+  border: 1.2rem solid;
+  font-size: 3px;
 }
 
 footer > a {
   color: #bbbbbb;
-}
-
-#errorMsg {
-  color: #f0506e;
-  font-size: 14px;
 }

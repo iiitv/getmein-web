@@ -25,6 +25,8 @@
     <link rel="stylesheet" href="/style.css">
   </head>
   <body class="uk-section uk-section-secondary uk-margin-remove">
+
+    <!-- Header -->
     <header class="uk-text-center uk-align-center uk-width-1-1">
       <img src="https://avatars3.githubusercontent.com/u/9347727?s=150&v=4">
       <div class="uk-text-center uk-text-large uk-text-bold">
@@ -32,34 +34,40 @@
       </div>
     </header>
 
+    <!-- Main -->
     <main>
       <div class="uk-container uk-align-center uk-text-center">
         <form class="uk-card uk-inline uk-legend uk-width-auto">
           <div class="uk-margin">
-            <span id="errorMsg"> </span><br>
-            <div class="uk-inline" id="username-cont">
+            <div class="uk-inline">
               <span class="uk-form-icon" uk-icon="icon: user"></span>
-              <input class="uk-input" type="text" id="username" maxlength="100"
+              <input class="uk-input uk-border-pill uk-text-small" type="text"
+                id="username"
+                maxlength="39"
+                spellcheck="false"
                 placeholder="GitHub username" required>
             </div>
           </div>
-          <div class="uk-margin">
+          <div class="uk-margin uk-margin-remove-bottom">
             <div class="uk-inline">
               <span class="uk-form-icon" uk-icon="icon: mail"></span>
-              <input class="uk-input" type="email" id="email" maxlength="100"
+              <input class="uk-input uk-border-pill uk-text-small" type="email"
+                id="email"
+                maxlength="100"
+                spellcheck="false"
                 placeholder="Email" required>
             </div>
           </div>
-          <span class="uk-text-meta uk-text-warning uk-align-left">Please use
+          <span class="uk-text-meta uk-text-warning uk-text-center">PS: Please
+            use
             your educational email address</span>
           <br>
-          <button class="uk-button uk-border-pill uk-button-default"
+          <button class="uk-button uk-margin-top uk-border-pill
+            uk-button-default"
             type="submit" onclick="showToast()">Submit</button>
         </form>
       </div>
-      <div class="message uk-text-center uk-text-success">
-
-      </div>
+      <div class="message uk-text-center uk-text-success"></div>
     </main>
 
 
