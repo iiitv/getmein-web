@@ -2,71 +2,87 @@
 <html>
   <head>
     <title>Welcome to IIITV</title>
-    <meta name="description" content="Portal to get an invite to IIITV Github organization">
-    <link id="favicon" rel="icon" href="https://avatars3.githubusercontent.com/u/9347727?s=200&v=4" type="image/png">
+    <meta name="description" content="Portal to get an invite to IIITV Github
+      organization">
+    <link id="favicon" rel="icon"
+      href="https://avatars3.githubusercontent.com/u/9347727?s=200&v=4"
+      type="image/png">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- UIkit CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css" />
-    <link href="https://fonts.googleapis.com/css?family=Sunflower:300" rel="stylesheet">
+    <link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css"
+      />
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC"
+      rel="stylesheet">
 
     <!-- UIkit JS -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
     <link rel="stylesheet" href="/style.css">
   </head>
   <body class="uk-section uk-section-secondary uk-margin-remove">
     <header class="uk-text-center uk-align-center uk-width-1-1">
       <img src="https://avatars3.githubusercontent.com/u/9347727?s=150&v=4">
-      <div class="fontwa uk-text-center uk-text-center uk-text-large uk-text-bold">
+      <div class="uk-text-center uk-text-large uk-text-bold">
         GetMeIn
       </div>
-      <!-- Place this tag where you want the button to render. -->
-      <a class="github-button" href="https://github.com/iiitv/getmein-web" data-icon="octicon-star" data-show-count="true" aria-label="Star iiitv/getmein-web on GitHub">Star</a>
     </header>
 
     <main>
       <div class="uk-container uk-align-center uk-text-center">
         <form class="uk-card uk-inline uk-legend uk-width-auto">
           <div class="uk-margin">
-              <span id="errorMsg"> </span><br>
-              <div class="uk-inline" id="username-cont">
-                  <span class="uk-form-icon" uk-icon="icon: user"></span>
-                  <input class="uk-input" type="text" id="username" maxlength="100" placeholder="GitHub username" required>
-              </div>
-          </div>    
-          <div class="uk-margin">
-              <div class="uk-inline">
-                  <span class="uk-form-icon" uk-icon="icon: mail"></span>
-                  <input class="uk-input" type="email" id="email" maxlength="100" placeholder="Email" required>
-              </div>
+            <span id="errorMsg"> </span><br>
+            <div class="uk-inline" id="username-cont">
+              <span class="uk-form-icon" uk-icon="icon: user"></span>
+              <input class="uk-input" type="text" id="username" maxlength="100"
+                placeholder="GitHub username" required>
+            </div>
           </div>
-          <span class="uk-text-meta uk-text-warning uk-align-left">Please use your Institute's email address.</span>          
+          <div class="uk-margin">
+            <div class="uk-inline">
+              <span class="uk-form-icon" uk-icon="icon: mail"></span>
+              <input class="uk-input" type="email" id="email" maxlength="100"
+                placeholder="Email" required>
+            </div>
+          </div>
+          <span class="uk-text-meta uk-text-warning uk-align-left">Please use
+            your educational email address (if any)</span>
           <br>
-          <button class="uk-button uk-align-center uk-text-center uk-button-default" type="submit"  onclick="showToast()">Submit</button>
+          <button class="uk-button uk-border-pill uk-button-default"
+            type="submit" onclick="showToast()">Submit</button>
         </form>
       </div>
       <div class="message uk-text-center uk-text-success">
-        
+
       </div>
     </main>
-    
-    <footer class="uk-align-center uk-text-center">
+
+
+    <footer class="uk-align-center uk-text-center uk-position-bottom">
       <hr class="uk-divider-icon">
-      <a uk-tooltip="title: GitHub; pos: left" class="uk-icon-button uk-margin-small-right" href="https://github.com/iiitv" uk-icon="github"></a>      
-      <a uk-tooltip="title: Like us on Facebook; pos: top" class="uk-icon-button uk-margin-small-right" href="https://fb.com/iiitvcc" uk-icon="facebook"></a>
-      <a uk-tooltip="title: Follow us on Twitter; pos: top" class="uk-icon-button uk-margin-small-right" href="https://twitter.com/iiitvcc" uk-icon="twitter"></a>
-      <a uk-tooltip="title: Drop an email; pos: right" class="uk-icon-button uk-margin-small-right" href="mailto:codingclub@iiitv.ac.in" uk-icon="mail"></a>
+      <a uk-tooltip="title: GitHub; pos: left" class="uk-icon-button
+        uk-margin-small-right" href="https://github.com/iiitv" uk-icon="github"></a>
+      <a uk-tooltip="title: Facebook; pos: top" class="uk-icon-button
+        uk-margin-small-right" href="https://fb.com/iiitvcc" uk-icon="facebook"></a>
+      <a uk-tooltip="title: LinkedIn; pos: top" class="uk-icon-button
+        uk-margin-small-right" href="https://www.linkedin.com/company/iiitvcc/"
+        uk-icon="linkedin"></a>
+      <a uk-tooltip="title: Twitter; pos: top"
+        class="uk-icon-button uk-margin-small-right"
+        href="https://twitter.com/iiitvcc" uk-icon="twitter"></a>
+      <a uk-tooltip="title: Drop an email; pos: right" class="uk-icon-button
+        uk-margin-small-right" href="mailto:codingclub@iiitv.ac.in"
+        uk-icon="mail"></a>
     </footer>
 
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="crossorigin="anonymous"></script>
     <script src="/client.js"></script>
-    <!-- Place this tag in your head or just before your close body tag. -->
-    <script async defer src="https://buttons.github.io/buttons.js"></script>
-
   </body>
 </html>
