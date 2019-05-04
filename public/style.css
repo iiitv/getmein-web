@@ -108,8 +108,8 @@ footer > a {
 .tgl + .tgl-btn {
   outline: 0;
   display: block;
-  width: 4em;
-  height: 2em;
+  width: 2.8em;
+  height: 1.8em;
   position: absolute;
   top: 1.875em;
   right: 1.875em;
