@@ -21,7 +21,7 @@ body {
 
 form {
   margin-bottom: 1.75rem;
-  padding: 15px;
+  padding: 1rem;
   display: inline-block;
   width: 100%;
   max-width: 340px;
@@ -32,8 +32,7 @@ form {
 input {
   display: block;
   width: 100%;
-  border: 1.2rem solid;
-  font-size: 3px;
+  border: 2rem solid;
 }
 
 footer > a {
