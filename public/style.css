@@ -24,7 +24,7 @@ body {
   right: 0;
 }
 
-body, html {
+body {
   overflow-y: scroll;
 }
 
@@ -92,6 +92,8 @@ footer > a {
   color: #f0506e;
   font-size: 14px;
 }
+
+/* Light mode button */
 
 .tgl {
   display: none;

@@ -1,5 +1,5 @@
-const createMail = function(username, email) {
-    return `
+const createMail = function (username, email) {
+  return `
     <!DOCTYPE html>
     <html lang='en'>
     
@@ -14,8 +14,6 @@ const createMail = function(username, email) {
                 margin: 0px;
             }
             
-
-            
             #root {
                 width: 100%;
             }
@@ -25,7 +23,15 @@ const createMail = function(username, email) {
                 -webkit-font-smoothing: antialiased;
                 text-shadow: rgba(0, 0, 0, .01) 0 0 1px;
                 transition: 0.1s linear;
-                font-family: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+                font-family:
+                    -apple-system,
+                    system-ui,
+                    BlinkMacSystemFont,
+                    "Segoe UI",
+                    Roboto,
+                    "Helvetica Neue",
+                    Arial,
+                    sans-serif;
             }
             
             #header {
@@ -123,7 +129,7 @@ const createMail = function(username, email) {
         <div id='root'>
             <div id='header'>
                 <div id='brand-logo-cont'>
-                    <img id='brand-logo' src='https://user-images.githubusercontent.com/42460356/56201505-a7356f00-605e-11e9-9757-a18a93df08ec.png' alt='IIITV Organization Logo'>
+                    <img id='brand-logo' src='http://github.com/iiitv.png' alt='IIITV Organization Logo'>
                 </div>
                 <h2>Welcome to IIITV Open Source<br>Organization</h2><br>
             </div>
@@ -131,7 +137,7 @@ const createMail = function(username, email) {
             <main>
                 <h3>We're glad to have you with us, ${username}!</h3>
                 <br>
-                <p>Click on the button below to verify you e-mail ID,<br>and you are good to go!</p>
+                <p>Click on the (Verify e-mail) button below to verify your Identity,<br>and you are good to go!</p>
                 <a href='${email}' id='verify'>Verify e-mail</a>
                 <p>With regards,<br>IIITV Open Source Organization</p>
             </main>
@@ -156,6 +162,6 @@ const createMail = function(username, email) {
         </div>
     </body>
     
-    </html> `;
-};
-module.exports.createMail = createMail;
+    </html> `
+}
+module.exports.createMail = createMail
