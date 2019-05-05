@@ -73,7 +73,7 @@ $(function () {
         if (res.status === 200) {
           // eslint-disable-next-line
           UIkit.notification({
-            message: '<span uk-icon=\'icon: thumbs-up\'></span> A verification E-mail has been sent.',
+            message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
             status: 'success',
             pos: 'top-center',
             timeout: 2000
@@ -83,7 +83,7 @@ $(function () {
       .catch((e) => {
         // eslint-disable-next-line
         UIkit.notification({
-          message: '<span uk-icon=\'icon: warning\'></span> An error occured. Please try again later.',
+          message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> An error occured. Please try again later.',
           status: 'danger',
           pos: 'top-center',
           timeout: 1000
@@ -98,7 +98,7 @@ window.showToast = function () {
   if (username === '' && email === '') {
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> email and GitHub username are required fields.',
+      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> email and GitHub username are required fields.',
       status: 'danger',
       pos: 'top-center',
       timeout: 1000
@@ -106,7 +106,7 @@ window.showToast = function () {
   } else if (email === '') {
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> email is a required field.',
+      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> email is a required field.',
       status: 'danger',
       pos: 'top-center',
       timeout: 1000
@@ -114,7 +114,7 @@ window.showToast = function () {
   } else if (username === '') {
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<span uk-icon=\'icon: warning\'></span> username is a required field.',
+      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> username is a required field.',
       status: 'danger',
       pos: 'top-center',
       timeout: 1000
@@ -122,7 +122,7 @@ window.showToast = function () {
   } else {
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<div uk-spinner></div> Processing your request.',
+      message: '<div uk-spinner></div> <span class=\'uk-text-small\'>Processing your request.</span>',
       status: 'success',
       pos: 'bottom-center',
       timeout: 2000
