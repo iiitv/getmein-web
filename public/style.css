@@ -4,18 +4,14 @@
 /* You might want to try something fancier: */
 /* less: http://lesscss.org/ */
 
-*, .fontwa {
+* {
   box-sizing: border-box;
-  font-family: 'Sunflower', sans-serif;
+  font-family: "Noto Sans SC", sans-serif;
 }
 
 body {
-  font-family: helvetica, arial, sans-serif;
   margin: 25px;
-}
-
-/* Scrollbar hatane ki Ninja Technique Ding² */
-body {
+  overflow-y: scroll;
   position: fixed;
   top: 0;
   bottom: 0;
@@ -23,71 +19,31 @@ body {
   right: 0;
 }
 
-body{
-  overflow-y: scroll;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-p {
-  max-width: 600px;
-}
-
 form {
-  margin-bottom: 25px;
-  padding: 15px;
-/*   background-color: #f89551e6; */
+  margin-bottom: 1.75rem;
+  padding: 1rem;
   display: inline-block;
   width: 100%;
   max-width: 340px;
-  border-radius: 3px;
-/*   box-shadow: 0px 0px white; */
+  border-radius: 1rem;
   transition-duration: 0.5s;
 }
 
 input {
   display: block;
-  margin-bottom: 10px;
-  padding: 5px;
   width: 100%;
-  border: 1px solid;
-  border-radius: 3px;
-/*   font-size: 12px; */
+  border: 2rem solid;
 }
 
-button {
-  font-size: 14px;
-  border-radius: 3px;
-  background-color: lightgrey;
-  border: 1px solid black;
-  box-shadow: 3px 3px white;
-  cursor: pointer;
-  transition-duration: 0.5s !important;
-}
-
-button:hover {
-  background-color: #f89551e6 !important;
-}
-
-button:active {
-  box-shadow: none;
-}
-
-li {
-  margin-bottom: 5px;
-}
-
-footer {
-  margin-top: 50px;
+/* Chrome's Autocomplete sucks!!  */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+  -webkit-text-fill-color: white;
 }
 
 footer > a {
-  color: #BBBBBB;
-}
-
-#errorMsg {
-  color: #f0506e;
-  font-size: 14px;
+  color: #bbbbbb;
 }
