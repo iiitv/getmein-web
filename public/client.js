@@ -1,4 +1,3 @@
-
 // @todo: Validate Email Function
 
 // $('#email').keyup(function () {
@@ -15,21 +14,19 @@
 $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
-    // http://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
-    const profile = 'http://aashutoshrathi.glitch.me/api/gh/' + username.val()
+    // https://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
+    const profile = 'https://aashutoshrathi.glitch.me/api/gh/' + username.val()
     fetch(profile)
-      .then((response) => {
-        return response.json()
-          .then((data) => {
-            if (data.message) {
-              username.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
-            } else {
-              username.css({ 'color': '#32d296', 'border-color': '#32d296' })
-            }
-          })
+      .then(async (response) => {
+        const data = await response.json()
+        if (data.message) {
+          username.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+        } else {
+          username.css({ 'color': '#32d296', 'border-color': '#32d296' })
+        }
       })
       .catch((e) => {
-        console.log(e)
+        console.error(e)
       })
   } else {
     username.css({ 'color': '#32d296', 'border-color': '#32d296' })
@@ -84,9 +81,10 @@ $(function () {
         }
       })
       .catch((e) => {
+        console.error(e)
         // eslint-disable-next-line
         UIkit.notification({
-          message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> An error occured. Please try again later.',
+          message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
           status: 'danger',
           pos: 'top-center',
           timeout: 1000
@@ -101,26 +99,22 @@ window.showToast = function () {
   if (username === '' && email === '') {
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> email and GitHub username are required fields.',
+      message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Email and Username are required fields</span>',
       status: 'danger',
       pos: 'top-center',
-      timeout: 1000
+      timeout: 2000
     })
-  } else if (email === '') {
+  } else if (email === '' || username === '') {
+    var empty = 'Email'
+    if (username.length === 0) {
+      empty = 'Username'
+    }
     // eslint-disable-next-line
     UIkit.notification({
-      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> email is a required field.',
+      message: `<span uk-icon='icon: warning'></span> <span class='uk-text-small'>${empty} is required field.</span>`,
       status: 'danger',
       pos: 'top-center',
-      timeout: 1000
-    })
-  } else if (username === '') {
-    // eslint-disable-next-line
-    UIkit.notification({
-      message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'></span> username is a required field.',
-      status: 'danger',
-      pos: 'top-center',
-      timeout: 1000
+      timeout: 1500
     })
   } else {
     // eslint-disable-next-line
