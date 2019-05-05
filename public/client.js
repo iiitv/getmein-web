@@ -17,16 +17,16 @@ $('#username').keyup(function () {
     // https://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
     const profile = 'https://aashutoshrathi.glitch.me/api/gh/' + username.val()
     fetch(profile)
-      .then(async (response) => {
-        const data = await response.json()
+      .then(response => response.json())
+      .then(data => {
         if (data.message) {
-          username.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+          username.css({ color: '#f0506e', 'border-color': '#f0506e' })
         } else {
-          username.css({ 'color': '#32d296', 'border-color': '#32d296' })
+          username.css({ color: '#32d296', 'border-color': '#32d296' })
         }
       })
-      .catch((e) => {
-        console.error(e)
+      .catch(e => {
+        console.log(e)
       })
   } else {
     username.css({ 'color': '#32d296', 'border-color': '#32d296' })
