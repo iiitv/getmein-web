@@ -1,3 +1,6 @@
+
+// @todo: Validate Email Function
+
 // $('#email').keyup(function () {
 //   const email = $('#email')
 //   if (email.val()) {
@@ -16,7 +19,7 @@ $('#username').keyup(function () {
     const profile = 'http://aashutoshrathi.glitch.me/api/gh/' + username.val()
     fetch(profile)
       .then((response) => {
-        response.json()
+        return response.json()
           .then((data) => {
             if (data.message) {
               username.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
@@ -129,5 +132,3 @@ window.showToast = function () {
     })
   }
 }
-
-// ToDo: Validate Email Function
