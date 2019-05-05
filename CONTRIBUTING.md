@@ -35,7 +35,7 @@ In case you've encountered a bug, please make sure:
 Pull requests are welcome! Please keep the following in mind:
 
 - See below for instructions on how to set up the project on your machine.
-- To match the existing code styling, use `npm run prettier` before committing code.
+- To match the existing code styling, use `npm run lint:fix` before committing code.
 
 Set up the project on your machine:
 
