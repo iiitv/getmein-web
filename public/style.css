@@ -11,29 +11,12 @@
 
 body {
   margin: 25px;
-  background-color: #f4f4f8;
-}
-
-/* Scrollbar hatane ki Ninja Technique Ding² */
-body {
   overflow-y: scroll;
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
-}
-
-body {
-  overflow-y: scroll;
-}
-
-.bold {
-  font-weight: bold;
-}
-
-p {
-  max-width: 600px;
 }
 
 form {
