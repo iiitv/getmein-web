@@ -15,6 +15,7 @@ const b16 = process.env.B16
 const b17 = process.env.B17
 const b18 = process.env.B18
 const outs = process.env.OUTS
+const slack = process.env.SLACK_TOKEN
 
 // Get transporter services
 const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
@@ -46,7 +47,10 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
     username: username
   })
 
-  const verificationurl = 'http://' + request.get('host') + '/verify/' + base64
+  var SlackURL = 'https://slack.com/api/users.admin.invite?token=' + slack + '&email=' + id
+  axios.post(SlackURL)
+
+  const verificationurl = 'https://' + request.get('host') + '/verify/' + base64
 
   var transporter = nodemailer.createTransport({
     host: emailHost,
