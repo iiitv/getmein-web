@@ -1,6 +1,12 @@
 # getmein-web
 
-[![js-semistandard-style](https://img.shields.io/badge/code%20style-semistandard-brightgreen.svg?style=flat-square)](https://github.com/Flet/semistandard)
+<h1 align="center">
+
+![Travis (.com)](https://img.shields.io/travis/com/iiitv/getmein-web.svg?style=for-the-badge)
+![GitHub issues](https://img.shields.io/github/issues/iiitv/getmein-web.svg?style=for-the-badge)
+![GitHub](https://img.shields.io/github/license/iiitv/getmein-web.svg?style=for-the-badge)
+
+</h1>
 
 ### Getting into IIITV Open Source Organization just got easier!
 
