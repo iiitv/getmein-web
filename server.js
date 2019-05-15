@@ -47,10 +47,11 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
     username: username
   })
 
-  var SlackURL = 'https://slack.com/api/users.admin.invite?token=' + slack + '&email=' + id
+  // Invite to Slack
+  var SlackURL = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
   axios.post(SlackURL)
 
-  const verificationurl = 'https://' + request.get('host') + '/verify/' + base64
+  const verificationurl = `https://${request.get('host')}/verify/${base64}`
 
   var transporter = nodemailer.createTransport({
     host: emailHost,
@@ -110,7 +111,7 @@ const addMember = (data) => {
     const checkInsti = data.email.split('@')[1]
     if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
       console.log('IIITian')
-      const removeURL = 'https://api.github.com/teams/' + dict['outsider'] + '/memberships/' + data.username + '?access_token=' + token
+      const removeURL = `https://api.github.com/teams/${dict['outsider']}/memberships/${data.username}?access_token=${token}`
       axios.delete(removeURL)
         .then(response => {
           console.log(response.data.url)
@@ -123,7 +124,7 @@ const addMember = (data) => {
       pref = 'outsider'
     }
     console.log(pref)
-    const url = 'https://api.github.com/teams/' + dict[pref] + '/memberships/' + data.username + '?access_token=' + token
+    const url = `https://api.github.com/teams/${dict[pref]}/memberships/${data.username}?access_token=${token}`
     console.log(url)
 
     axios.put(url)
