@@ -55,6 +55,10 @@ Don't commit this `.env` file or remove it from `.gitignore` .
 | PORT               | The port that will be used by getmein server |      -             |  `465`               |
 | POOL               | The environment                              | `true`,`false`     |  `true`              |
 
+### Stargazers over time📈
+
+[![Stargazers over time](https://starchart.cc/iiitv/getmein-web.svg)](https://starchart.cc/iiitv/getmein-web)
+
 <h1 align='center'>
 <a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></a>
 <a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></a>
