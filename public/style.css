@@ -44,6 +44,19 @@ input:-webkit-autofill:active {
   -webkit-text-fill-color: white;
 }
 
+footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+@media screen and (max-height: 600px) {
+  footer {
+    position: static;
+  }
+}
+
 footer > a {
   color: #bbbbbb;
 }
