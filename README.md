@@ -9,7 +9,7 @@
 
 ### How to Use :
 
-Go to http://getmein.glitch.me to get an invitation to join this organization.
+Go to http://getmein.glitch.me to get invitations to join this GitHub organization and the Slack Workspace.
 
 Previously, joining the IIITV Organization was a bit tedious - create an issue in the iiitv/getmein repository and wait for the invite.
 
@@ -25,7 +25,7 @@ Your GitHub profile won't show you as a part of IIITV's organization. To make yo
 * Add yourself to [`Members`](https://github.com/orgs/iiitv/teams/members) team if not already a member of it.
 * Join the [team](https://github.com/orgs/iiitv/teams) for your batch (`batch-of-20XX`).
 * Solve issues in [organisation's repositories](https://github.com/iiitv/repositories).
-* Create your project and collaborate with others.
+* Create your project and collaborate with others on Gitter Rooms and Slack Channels.
 
 #### Do not belong to IIITV?
 
