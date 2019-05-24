@@ -52,8 +52,11 @@ footer {
 }
 
 @media screen and (max-height: 600px) {
+  body {
+    position: relative;
+  }
   footer {
-    position: static;
+    top: 450px;
   }
 }
 
