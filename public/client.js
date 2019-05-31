@@ -10,7 +10,7 @@ $('#email').keyup(function () {
 })
 
 var validateEmail = function (emailValue) {
-  var regex = /\S+@\S+\.\S+/
+  var regex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/
   return regex.test(emailValue)
 }
 
