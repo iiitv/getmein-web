@@ -1,15 +1,18 @@
-// @todo: Validate Email Function
+$('#email').keyup(function () {
+  const email = $('#email')
+  if (email.val()) {
+    if (!validateEmail(email.val())) {
+      email.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+    } else {
+      email.css({ 'color': '#32d296', 'border-color': '#32d296' })
+    }
+  }
+})
 
-// $('#email').keyup(function () {
-//   const email = $('#email')
-//   if (email.val()) {
-//     if (validateEmail(email.val())) {
-//       email.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
-//     } else {
-//       email.css({ 'color': '#32d296', 'border-color': '#32d296' })
-//     }
-//   }
-// })
+var validateEmail = function (emailValue) {
+  var regex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/
+  return regex.test(emailValue)
+}
 
 $('#username').keyup(function () {
   const username = $('#username')
