@@ -113,8 +113,9 @@ $(function () {
               })
             })
         } else if (out.total_count === 0) {
+          // eslint-disable-next-line
           UIkit.notification({
-            message: `<span uk-icon='icon: warning'></span> <span class='uk-text-small'>Wrong Username</span>`,
+            message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Wrong Username</span>',
             status: 'danger',
             pos: 'top-center',
             timeout: 1500
@@ -125,11 +126,9 @@ $(function () {
           })
           // setTimeout("location.reload(true);", 2000);
         }
-      }).catch(err => console.error(err));
+      }).catch(err => console.error(err))
   })
-
 })
-
 
 window.showToast = function () {
   const username = $('#username').val()
