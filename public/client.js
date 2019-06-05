@@ -126,7 +126,7 @@ $(function () {
         }
       }).catch((err) => {
         console.error(err)
-      // eslint-disable-next-line
+        // eslint-disable-next-line
         UIkit.notification({
           message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
           status: 'danger',
