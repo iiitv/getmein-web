@@ -84,14 +84,12 @@ $(function () {
     event.preventDefault()
     const username = $('#username').val()
     const email = $('#email').val()
-    console.log(username)
     fetch(`https://api.github.com/search/users?q=${username}`)
       .then(res => res.json())
       .then((out) => {
         if (out.total_count === 1) {
           fetch(`/sendmail/${username}/${email}`)
             .then((res) => {
-              console.log(res)
               if (res.status === 200) {
                 // eslint-disable-next-line
                 UIkit.notification({
@@ -126,7 +124,15 @@ $(function () {
           })
           // setTimeout("location.reload(true);", 2000);
         }
-      }).catch(err => console.error(err))
+      }).catch((err) => {
+        console.error(err)
+        UIkit.notification({
+          message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
+          status: 'danger',
+          pos: 'top-center',
+          timeout: 1000
+        })
+      })
   })
 })
 
