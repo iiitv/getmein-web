@@ -88,7 +88,7 @@ $(function () {
     fetch(`https://api.github.com/search/users?q=${username}`)
       .then(res => res.json())
       .then((out) => {
-        if (out.total_count == 1) {
+        if (out.total_count === 1) {
           fetch(`/sendmail/${username}/${email}`)
             .then((res) => {
               console.log(res)
