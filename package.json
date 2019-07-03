@@ -8,7 +8,7 @@
     "lint:fix": "eslint ./public/*.js *.js --fix"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.18.1",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
     "jquery": "^3.4.0",
