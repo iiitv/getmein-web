@@ -16,6 +16,7 @@ const b17 = process.env.B17
 const b18 = process.env.B18
 const outs = process.env.OUTS
 const slack = process.env.SLACK_TOKEN
+const webhookURL = process.env.INVITE_CHANNEL_WEBHOOK
 
 // Get transporter services
 const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
@@ -50,6 +51,32 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
   // Invite to Slack
   var SlackURL = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
   axios.post(SlackURL)
+
+  // Post invitation message on Slack
+  const time = Math.round((new Date()).getTime() / 1000)
+  const message = `Hello ${username}`
+  const options = {
+    'text': 'Welcome to IIITV',
+    'attachments': [
+      {
+        'color': '#36a64f',
+        'title': 'Invitation from IIITV',
+        'title_link': 'https://github.com/iiitv',
+        'text': message,
+        'footer': 'Slack API',
+        'ts': time
+      }
+    ]
+  }
+
+  axios.post(webhookURL, JSON.stringify(options))
+    .then(response => {
+      console.log('SUCCEEDED: Sent slack webhook: \n', response.data)
+    })
+    .catch(error => {
+      console.log('FAILED: Send slack webhook', error)
+      // reject(new Error('FAILED: Send slack webhook'))
+    })
 
   const verificationurl = `https://${request.get('host')}/verify/${base64}`
 
