@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const axios = require('axios')
@@ -54,14 +55,14 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
 
   // Post invitation message on Slack
   const time = Math.round((new Date()).getTime() / 1000)
-  const message = `Hello ${username}`
+  const message = `${username} got invited to iiitv organization on GitHub and Slack`
   const options = {
     'text': 'Welcome to IIITV',
     'attachments': [
       {
         'color': '#36a64f',
         'title': 'Invitation from IIITV',
-        'title_link': 'https://github.com/iiitv',
+        'title_link': 'https://github.com/orgs/iiitv/people',
         'text': message,
         'footer': 'Slack API',
         'ts': time
@@ -71,7 +72,7 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
 
   axios.post(webhookURL, JSON.stringify(options))
     .then(response => {
-      console.log('SUCCEEDED: Sent slack webhook: \n', response.data)
+      console.log('SUCCESS: Sent slack webhook:', response.data)
     })
     .catch(error => {
       console.log('FAILED: Send slack webhook', error)
