@@ -70,14 +70,31 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
     ]
   }
 
-  axios.post(webhookURL, JSON.stringify(options))
-    .then(response => {
-      console.log('SUCCESS: Sent slack webhook:', response.data)
-    })
-    .catch(error => {
-      console.log('FAILED: Send slack webhook', error)
-      // reject(new Error('FAILED: Send slack webhook'))
-    })
+  const sendMessage = new Promise((resolve, reject) => {
+    axios.post(webhookURL, JSON.stringify(options))
+      .then(response => {
+        console.log('SUCCESS: Sent slack webhook:', response.data)
+        resolve(204)
+      })
+      .catch(error => {
+        console.log('FAILED: Sent slack webhook', error)
+        reject(error)
+      })
+  })
+
+  let flag = 0
+  for (let maxRetry = 0; maxRetry < 3; maxRetry++) {
+    sendMessage
+      .then((status) => {
+        flag++
+      })
+      .catch((err) => {
+        console.log(err)
+      })
+    if (flag === 1) {
+      break
+    }
+  }
 
   const verificationurl = `https://${request.get('host')}/verify/${base64}`
 
