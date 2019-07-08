@@ -82,9 +82,9 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
     })
   }
 
-  (async function loop () {
+  const loop = async () => {
     for (let i = 0; i < 3; i++) {
-      console.log('retry sending message ', i)
+      console.log('retrying sending message ', i)
       try {
         const res = await sendMessage()
         console.log(res)
@@ -93,7 +93,8 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
         console.log(err)
       }
     }
-  })()
+  }
+  loop()
 
   const verificationurl = `https://${request.get('host')}/verify/${base64}`
 
