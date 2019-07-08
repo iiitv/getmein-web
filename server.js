@@ -50,8 +50,8 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
   })
 
   // Invite to Slack
-  var SlackURL = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
-  axios.post(SlackURL)
+  const slackUrl = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
+  axios.post(slackUrl)
 
   // Post invitation message on Slack
   const time = Math.round((new Date()).getTime() / 1000)
