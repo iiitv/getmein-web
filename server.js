@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const app = express()
 const axios = require('axios')
@@ -16,6 +17,7 @@ const b17 = process.env.B17
 const b18 = process.env.B18
 const outs = process.env.OUTS
 const slack = process.env.SLACK_TOKEN
+const webhookURL = process.env.INVITE_CHANNEL_WEBHOOK
 
 // Get transporter services
 const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
@@ -48,8 +50,51 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
   })
 
   // Invite to Slack
-  var SlackURL = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
-  axios.post(SlackURL)
+  const slackUrl = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
+  axios.post(slackUrl)
+
+  // Post invitation message on Slack
+  const time = Math.round((new Date()).getTime() / 1000)
+  const message = `${username} got invited to iiitv organization on GitHub and Slack`
+  const options = {
+    'text': 'Welcome to IIITV',
+    'attachments': [
+      {
+        'color': '#36a64f',
+        'title': 'Invitation from IIITV',
+        'title_link': 'https://github.com/orgs/iiitv/people',
+        'text': message,
+        'footer': 'Slack API',
+        'ts': time
+      }
+    ]
+  }
+
+  function sendMessage () {
+    return new Promise((resolve, reject) => {
+      axios.post(webhookURL, JSON.stringify(options))
+        .then(response => {
+          return resolve('SUCCESS: Sent slack webhook', response.data)
+        })
+        .catch(error => {
+          return reject(new Error('FAILED: Sent slack webhook', error))
+        })
+    })
+  }
+
+  const loop = async () => {
+    for (let i = 0; i < 3; i++) {
+      console.log('retrying sending message ', i)
+      try {
+        const res = await sendMessage()
+        console.log(res)
+        break
+      } catch (err) {
+        console.log(err)
+      }
+    }
+  }
+  loop()
 
   const verificationurl = `https://${request.get('host')}/verify/${base64}`
 
