@@ -22,6 +22,12 @@
       src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
+
+    <!-- Preload CSS -->
+    <link rel="preload" href="/style.css" as="stylesheet">
+    <link rel="preload" href="/github-corner.css" as="stylesheet">
+    
+    <!-- Include CSS -->
     <link rel="stylesheet" href="/style.css">
     <link rel="stylesheet" href="/github-corner.css">
   </head>
@@ -117,7 +123,7 @@
     <!-- Your web-app is https, so your scripts need to be too -->
     <script src="https://code.jquery.com/jquery-2.2.1.min.js"
       integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="crossorigin="anonymous"></script>
-    <script src="/client.js"></script>
-    <script src="/darkmode.js"></script>
+    <script defer src="/client.js"></script>
+    <script defer src="/darkmode.js"></script>
   </body>
 </html>
