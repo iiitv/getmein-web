@@ -4,7 +4,7 @@ const app = express()
 const axios = require('axios')
 const path = require('path')
 const crypto = require('crypto')
-const execSync = require('child_process')
+const { execSync } = require('child_process')
 const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const createMail = require('./createmail')
@@ -35,9 +35,16 @@ app.post('/git', (req, res) => {
       'git fetch origin master',
       'git reset --hard origin/master',
       'git pull origin master --force',
-      'refresh']
+      'npm i',
+      'refresh'
+    ]
     for (const cmd of commands) {
-      console.log(execSync(cmd).toString())
+      try {
+        const o = execSync(cmd)
+        console.log(o.toString())
+      } catch (e) {
+        console.log(e)
+      }
     }
     console.log('> [GIT] Updated with origin/master')
   } else {
