@@ -1,4 +1,4 @@
-const createMail = function (username, email) {
+const createMail = (username, email) => {
   return `
     <!DOCTYPE html>
     <html lang='en'>
