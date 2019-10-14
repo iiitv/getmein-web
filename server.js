@@ -3,6 +3,9 @@ const express = require('express')
 const app = express()
 const axios = require('axios')
 const path = require('path')
+const crypto = require('crypto')
+const { execSync } = require('child_process')
+const bodyParser = require('body-parser')
 const nodemailer = require('nodemailer')
 const createMail = require('./createmail')
 const urlcrypt = require('url-crypt')('~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF')
@@ -18,6 +21,37 @@ const b18 = process.env.B18
 const outs = process.env.OUTS
 const slack = process.env.SLACK_TOKEN
 const webhookURL = process.env.INVITE_CHANNEL_WEBHOOK
+const glitch = process.env.GLITCH_SECRET
+app.use(bodyParser.json())
+
+// Auto-update Glitch with GitHub
+app.post('/git', (req, res) => {
+  const hmac = crypto.createHmac('sha1', glitch)
+  const sig = 'sha1=' + hmac.update(JSON.stringify(req.body)).digest('hex')
+  if (req.headers['x-github-event'] === 'push' &&
+    crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(req.headers['x-hub-signature']))) {
+    res.sendStatus(200)
+    const commands = [
+      'git fetch origin master',
+      'git reset --hard origin/master',
+      'git pull origin master --force',
+      'npm i',
+      'refresh'
+    ]
+    for (const cmd of commands) {
+      try {
+        const o = execSync(cmd)
+        console.log(o.toString())
+      } catch (e) {
+        console.log(e)
+      }
+    }
+    console.log('> [GIT] Updated with origin/master')
+  } else {
+    console.log('webhook signature incorrect!')
+    return res.sendStatus(403)
+  }
+})
 
 // Get transporter services
 const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
