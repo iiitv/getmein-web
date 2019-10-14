@@ -4,8 +4,7 @@
   "description": "Portal to get an invite to IIITV OSS Team",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint ./public/*.js *.js",
-    "lint:fix": "eslint ./public/*.js *.js --fix"
+    "lint": "./node_modules/eslint/bin/eslint.js ./public/*.js *.js --fix"
   },
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",

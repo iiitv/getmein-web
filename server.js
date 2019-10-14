@@ -11,18 +11,14 @@ const urlcrypt = require('url-crypt')(
   '~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF'
 )
 const sgMail = require('@sendgrid/mail')
-const token = process.env.SECRET
-const { B13, B14, B15, B16, B17, B18, B19, OUTS } = process.env
-const slack = process.env.SLACK_TOKEN
-const webhookURL = process.env.INVITE_CHANNEL_WEBHOOK
-const glitch = process.env.GLITCH_SECRET
+const constants = require('./constants')
 
 app.use(bodyParser.json())
 sgMail.setApiKey(process.env.SG_TOKEN)
 
 // Auto-update Glitch with GitHub
 app.post('/git', (req, res) => {
-  const hmac = crypto.createHmac('sha1', glitch)
+  const hmac = crypto.createHmac('sha1', constants.glitch)
   const sig = 'sha1=' + hmac.update(JSON.stringify(req.body)).digest('hex')
   if (
     req.headers['x-github-event'] === 'push' &&
@@ -60,16 +56,6 @@ app.get('/', (request, response) => {
   response.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
-const dict = {}
-dict['2013'] = B13
-dict['2014'] = B14
-dict['2015'] = B15
-dict['2016'] = B16
-dict['2017'] = B17
-dict['2018'] = B18
-dict['2019'] = B19
-dict['outsider'] = OUTS
-
 // Send the mail to the given email
 app.get('/sendmail/:username/:id', (req, response, next) => {
   const username = req.params.username
@@ -80,7 +66,7 @@ app.get('/sendmail/:username/:id', (req, response, next) => {
   })
 
   // Invite to Slack
-  const slackUrl = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
+  const slackUrl = `https://slack.com/api/users.admin.invite?token=${constants.slack}&email=${id}`
   axios.post(slackUrl)
 
   // Post invitation message on Slack
@@ -103,7 +89,7 @@ app.get('/sendmail/:username/:id', (req, response, next) => {
   const sendMessage = () => {
     return new Promise((resolve, reject) => {
       axios
-        .post(webhookURL, JSON.stringify(options))
+        .post(constants.webhookURL, JSON.stringify(options))
         .then(response => {
           return resolve('SUCCESS: Sent slack webhook', response.data)
         })
@@ -168,8 +154,8 @@ const addMember = data => {
     if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
       console.log('IIITian')
       const removeURL = `https://api.github.com/teams/${
-        dict['outsider']
-      }/memberships/${data.username}?access_token=${token}`
+        constants.dict['outsider']
+      }/memberships/${data.username}?access_token=${constants.token}`
       axios
         .delete(removeURL)
         .then(response => {
@@ -183,7 +169,7 @@ const addMember = data => {
       pref = 'outsider'
     }
     console.log(pref)
-    const url = `https://api.github.com/teams/${dict[pref]}/memberships/${data.username}?access_token=${token}`
+    const url = `https://api.github.com/teams/${constants.dict[pref]}/memberships/${data.username}?access_token=${constants.token}`
     console.log(url)
 
     axios
