@@ -11,15 +11,15 @@ const urlcrypt = require('url-crypt')(
   '~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF'
 )
 const sgMail = require('@sendgrid/mail')
-const constants = require('./constants')
+const { glitch, slack, webhookURL, dict, token } = require('./constants')
 
 app.use(bodyParser.json())
 sgMail.setApiKey(process.env.SG_TOKEN)
 
 // Auto-update Glitch with GitHub
 app.post('/git', (req, res) => {
-  const hmac = crypto.createHmac('sha1', constants.glitch)
-  const sig = 'sha1=' + hmac.update(JSON.stringify(req.body)).digest('hex')
+  const hmac = crypto.createHmac('sha1', glitch)
+  const sig = `sha1=${hmac.update(JSON.stringify(req.body)).digest('hex')}`
   if (
     req.headers['x-github-event'] === 'push' &&
     crypto.timingSafeEqual(
@@ -52,12 +52,12 @@ app.post('/git', (req, res) => {
 
 app.use(express.static('public'))
 
-app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, '/views/index.html'))
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
 // Send the mail to the given email
-app.get('/sendmail/:username/:id', (req, response, next) => {
+app.get('/sendmail/:username/:id', (req, res, next) => {
   const username = req.params.username
   const id = req.params.id
   const base64 = urlcrypt.cryptObj({
@@ -66,7 +66,7 @@ app.get('/sendmail/:username/:id', (req, response, next) => {
   })
 
   // Invite to Slack
-  const slackUrl = `https://slack.com/api/users.admin.invite?token=${constants.slack}&email=${id}`
+  const slackUrl = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
   axios.post(slackUrl)
 
   // Post invitation message on Slack
@@ -89,7 +89,7 @@ app.get('/sendmail/:username/:id', (req, response, next) => {
   const sendMessage = () => {
     return new Promise((resolve, reject) => {
       axios
-        .post(constants.webhookURL, JSON.stringify(options))
+        .post(webhookURL, JSON.stringify(options))
         .then(response => {
           return resolve('SUCCESS: Sent slack webhook', response.data)
         })
@@ -154,8 +154,8 @@ const addMember = data => {
     if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
       console.log('IIITian')
       const removeURL = `https://api.github.com/teams/${
-        constants.dict['outsider']
-      }/memberships/${data.username}?access_token=${constants.token}`
+        dict['outsider']
+      }/memberships/${data.username}?access_token=${token}`
       axios
         .delete(removeURL)
         .then(response => {
@@ -169,7 +169,7 @@ const addMember = data => {
       pref = 'outsider'
     }
     console.log(pref)
-    const url = `https://api.github.com/teams/${constants.dict[pref]}/memberships/${data.username}?access_token=${constants.token}`
+    const url = `https://api.github.com/teams/${dict[pref]}/memberships/${data.username}?access_token=${token}`
     console.log(url)
 
     axios
