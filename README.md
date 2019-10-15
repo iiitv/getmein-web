@@ -7,7 +7,7 @@
 <a href="https://github.com/iiitv/getmein-web/blob/master/LICENSE"><img src="https://img.shields.io/github/license/iiitv/getmein-web.svg?style=for-the-badge"></a>
 </p>
 
-### How to Use :
+### How to Use
 
 Go to http://getmein.glitch.me to get invitations to join this GitHub organization and the Slack Workspace.
 
@@ -15,11 +15,11 @@ Previously, joining the IIITV Organization was a bit tedious - create an issue i
 
 Now, enter your GitHub username and E-mail ID, get in easily, and start contributing!
 
-#### Show Yourself a part of IIITV:
+#### Show Yourself a part of IIITV
+
 Your GitHub profile won't show you as a part of IIITV's organization. To make your membership public, follow [this article](https://help.github.com/articles/publicizing-or-concealing-organization-membership/).
 
-
-#### Next Steps:
+#### Next Steps
 
 * Join us on [Gitter](https://gitter.im/iiitv/general).
 * Add yourself to [`Members`](https://github.com/orgs/iiitv/teams/members) team if not already a member of it.
@@ -27,49 +27,39 @@ Your GitHub profile won't show you as a part of IIITV's organization. To make yo
 * Solve issues in [organisation's repositories](https://github.com/iiitv/repositories).
 * Create your project and collaborate with others on Gitter Rooms and Slack Channels.
 
-#### Do not belong to IIITV?
+#### Do not belong to IIITV
 
 No problem, you are still welcome to our [Outsiders](https://github.com/orgs/iiitv/teams/outsiders) team.
 
-### For contributors :
+### For contributors
 
 [CONTRIBUTING.md](https://github.com/iiitv/getmein-web/blob/master/CONTRIBUTING.md)
 
-#### To install the dependencies :
+#### To install the dependencies
 
 ```sh
-$ npm install
+npm install
 ```
 
-#### To start the local server :
+#### To start the local server
 
 ```sh
-$ npm start
+npm start
 ```
 
-#### Configuration :
+#### Configuration
 
 You can configure this application to use with your environment specified settings. Just copy these Environment variable to `.env` and make make necessary changes.
 Don't commit this `.env` file or remove it from `.gitignore` .
 
-#### Environment variables :
+#### Environment variables
 
-| VAR                | DESCRIPTION                                  | VALUES             | DEFAULT              |
-|--------------------|----------------------------------------------|--------------------|----------------------|
-| EMAIL              | Organisation's Email                         | -                  |  -                   |
-| PASSWORD           | Organisation's Email Paasword                | -                  |  -                   |
-| SECRET             | This is a secret key used for cryptographic actions| -                  |  -                   |
-| B13                | Team ID of 2013 batch                        | -                  |  -                   |
-| B14                | Team ID of 2014 batch                        | -                  |  -                   |
-| B15                | Team ID of 2015 batch                        | -                  |  -                   |
-| B16                | Team ID of 2016 batch                        | -                  |  -                   |
-| B17                | Team ID of 2017 batch                        | -                  |  -                   |
-| B18                | Team ID of 2018 batch                        | -                  |  -                   |
-| OUTS               | Team ID of outsiders                         | -                  |  -                   |
-| EMAIL_HOST         | Host for sending e-mail                      |      -             | `'smtp.gmail.com'`   |
-| EMAIL_SECURE       | The environment                              | `true`,`false`     |  `true`              |
-| PORT               | The port that will be used by getmein server |      -             |  `465`               |
-| POOL               | The environment                              | `true`,`false`     |  `true`              |
+| VAR                    | DESCRIPTION                      | VALUES | DEFAULT |
+| ---------------------- | -------------------------------- | ------ | ------- |
+| SECRET                 | Your GitHub Token                | -      | -       |
+| SLACK_TOKEN            | Slack Token                      | -      | -       |
+| INVITE_CHANNEL_WEBHOOK | Webhook for Slack channel invite | -      | -       |
+| SG_TOKEN               | Sendgrid token for email         | -      | -       |
 
 ### Stargazers over time📈
 
