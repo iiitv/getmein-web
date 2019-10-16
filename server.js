@@ -118,7 +118,7 @@ app.get('/sendmail/:username/:id', (req, res, next) => {
 
   const msg = {
     to: id,
-    from: 'IIITV Coding Club <ossteam@iiitv.ac.in>',
+    from: 'IIITV Coding Club <codingclub@iiitv.ac.in>',
     subject: 'Invitation to join IIITV OSS Team',
     html: createMail.createMail(username, verificationurl)
   }
