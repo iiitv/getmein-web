@@ -11,7 +11,7 @@ const urlcrypt = require('url-crypt')(
   '~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF'
 )
 const sgMail = require('@sendgrid/mail')
-const { glitch, slack, webhookURL, token } = require('./constants')
+const { glitch, slack, webhookURL, token, selfEmail } = require('./constants')
 
 app.use(bodyParser.json())
 sgMail.setApiKey(process.env.SG_TOKEN)
@@ -58,8 +58,7 @@ app.get('/', (req, res) => {
 
 // Send the mail to the given email
 app.get('/sendmail/:username/:id', (req, res, next) => {
-  const username = req.params.username
-  const id = req.params.id
+  const { username, id } = req.params
   const base64 = urlcrypt.cryptObj({
     email: id,
     username: username
@@ -117,8 +116,9 @@ app.get('/sendmail/:username/:id', (req, res, next) => {
   const verificationurl = `https://${req.get('host')}/verify/${base64}`
 
   const msg = {
+    from: selfEmail,
+    bcc: selfEmail,
     to: id,
-    from: 'IIITV Coding Club <codingclub@iiitv.ac.in>',
     subject: 'Invitation to join IIITV OSS Team',
     html: createMail.createMail(username, verificationurl)
   }
@@ -148,26 +148,16 @@ app.get('/verify/:base64', (request, response, next) => {
 
 // Add the member as per their email id
 const addMember = data => {
+  const { email, username } = data
+  const regex = RegExp('^20\d{7}@iiitv(adodara)?.ac.in$') // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
-    let pref = `batch-of-${parseInt(data.email.substring(0, 4)) - 4}`
-    const checkInsti = data.email.split('@')[1]
-    if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
+    let pref = 'outsiders'
+    if (regex.test(email)) {
+      pref = `batch-of-${parseInt(email.substring(0, 4)) - 4}`
       console.log('IIITian')
-      const removeURL = `https://api.github.com/teams/outsiders/memberships/${data.username}?access_token=${token}`
-      axios
-        .delete(removeURL)
-        .then(res => {
-          console.log(res.data.url)
-          resolve(204)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    } else {
-      pref = 'outsiders'
     }
     console.log(pref)
-    const url = `https://api.github.com/teams/${pref}/memberships/${data.username}?access_token=${token}`
+    const url = `https://api.github.com/teams/${pref}/memberships/${username}?access_token=${token}`
     console.log(url)
 
     axios

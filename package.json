@@ -15,7 +15,7 @@
     "jquery": "^3.4.0",
     "path": "^0.12.7",
     "uikit": "^3.1.4",
-    "url-crypt": "^1.2.1"
+    "url-crypt": "*"
   },
   "devDependencies": {
     "eslint": "^5.16.0",
