@@ -2,9 +2,15 @@ $('#email').keyup(function () {
   const email = $('#email')
   if (email.val()) {
     if (!validateEmail(email.val())) {
-      email.css({ 'color': '#f0506e', 'border-color': '#f0506e' })
+      email.css({
+        'color': '#f0506e',
+        'border-color': '#f0506e'
+      })
     } else {
-      email.css({ 'color': '#32d296', 'border-color': '#32d296' })
+      email.css({
+        'color': '#32d296',
+        'border-color': '#32d296'
+      })
     }
   }
 })
@@ -23,16 +29,25 @@ $('#username').keyup(function () {
       .then(response => response.json())
       .then(data => {
         if (data.message) {
-          username.css({ color: '#f0506e', 'border-color': '#f0506e' })
+          username.css({
+            color: '#f0506e',
+            'border-color': '#f0506e'
+          })
         } else {
-          username.css({ color: '#32d296', 'border-color': '#32d296' })
+          username.css({
+            color: '#32d296',
+            'border-color': '#32d296'
+          })
         }
       })
       .catch(e => {
         console.log(e)
       })
   } else {
-    username.css({ 'color': '#32d296', 'border-color': '#32d296' })
+    username.css({
+      'color': '#32d296',
+      'border-color': '#32d296'
+    })
   }
 })
 
@@ -69,22 +84,48 @@ $(function () {
     event.preventDefault()
     const username = $('#username').val()
     const email = $('#email').val()
-    console.log(username)
-    fetch(`/sendmail/${username}/${email}`)
-      .then((res) => {
-        console.log(res)
-        if (res.status === 200) {
+    fetch(`https://api.github.com/search/users?q=${username}`)
+      .then(res => res.json())
+      .then((out) => {
+        if (out.total_count === 1) {
+          fetch(`/sendmail/${username}/${email}`)
+            .then((res) => {
+              if (res.status === 200) {
+                // eslint-disable-next-line
+                UIkit.notification({
+                  message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
+                  status: 'success',
+                  pos: 'top-center',
+                  timeout: 2000
+                })
+              }
+            })
+            .catch((e) => {
+              console.error(e)
+              // eslint-disable-next-line
+              UIkit.notification({
+                message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
+                status: 'danger',
+                pos: 'top-center',
+                timeout: 1000
+              })
+            })
+        } else if (out.total_count === 0) {
           // eslint-disable-next-line
           UIkit.notification({
-            message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
-            status: 'success',
+            message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Wrong Username</span>',
+            status: 'danger',
             pos: 'top-center',
-            timeout: 2000
+            timeout: 1500
           })
+          $('#username').css({
+            color: '#f0506e',
+            'border-color': '#f0506e'
+          })
+          // setTimeout("location.reload(true);", 2000);
         }
-      })
-      .catch((e) => {
-        console.error(e)
+      }).catch((err) => {
+        console.error(err)
         // eslint-disable-next-line
         UIkit.notification({
           message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
@@ -99,6 +140,7 @@ $(function () {
 window.showToast = function () {
   const username = $('#username').val()
   const email = $('#email').val()
+
   if (username === '' && email === '') {
     // eslint-disable-next-line
     UIkit.notification({
