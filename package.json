@@ -1,22 +1,21 @@
 {
   "name": "iiitv-getmein",
-  "version": "0.1.1",
-  "description": "Portal to get an invite to IIITV GitHub organization",
+  "version": "0.1.2",
+  "description": "Portal to get an invite to IIITV OSS Team",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint ./public/*.js *.js",
-    "lint:fix": "eslint ./public/*.js *.js --fix"
+    "lint": "./node_modules/eslint/bin/eslint.js ./public/*.js *.js --fix"
   },
   "dependencies": {
+    "@sendgrid/mail": "^6.4.0",
     "axios": "^0.18.1",
     "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
     "jquery": "^3.4.0",
-    "nodemailer": "^4.6.8",
     "path": "^0.12.7",
     "uikit": "^3.1.4",
-    "url-crypt": "^1.2.1"
+    "url-crypt": "*"
   },
   "devDependencies": {
     "eslint": "^5.16.0",

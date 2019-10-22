@@ -6,30 +6,27 @@ const path = require('path')
 const crypto = require('crypto')
 const { execSync } = require('child_process')
 const bodyParser = require('body-parser')
-const nodemailer = require('nodemailer')
 const createMail = require('./createmail')
-const urlcrypt = require('url-crypt')('~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF')
-const mail = process.env.EMAIL
-const password = process.env.PASSWORD
-const token = process.env.SECRET
-const b13 = process.env.B13
-const b14 = process.env.B14
-const b15 = process.env.B15
-const b16 = process.env.B16
-const b17 = process.env.B17
-const b18 = process.env.B18
-const outs = process.env.OUTS
-const slack = process.env.SLACK_TOKEN
-const webhookURL = process.env.INVITE_CHANNEL_WEBHOOK
-const glitch = process.env.GLITCH_SECRET
+const urlcrypt = require('url-crypt')(
+  '~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF'
+)
+const sgMail = require('@sendgrid/mail')
+const { glitch, slack, webhookURL, token, selfEmail } = require('./constants')
+
 app.use(bodyParser.json())
+sgMail.setApiKey(process.env.SG_TOKEN)
 
 // Auto-update Glitch with GitHub
 app.post('/git', (req, res) => {
   const hmac = crypto.createHmac('sha1', glitch)
-  const sig = 'sha1=' + hmac.update(JSON.stringify(req.body)).digest('hex')
-  if (req.headers['x-github-event'] === 'push' &&
-    crypto.timingSafeEqual(Buffer.from(sig), Buffer.from(req.headers['x-hub-signature']))) {
+  const sig = `sha1=${hmac.update(JSON.stringify(req.body)).digest('hex')}`
+  if (
+    req.headers['x-github-event'] === 'push' &&
+    crypto.timingSafeEqual(
+      Buffer.from(sig),
+      Buffer.from(req.headers['x-hub-signature'])
+    )
+  ) {
     res.sendStatus(200)
     const commands = [
       'git fetch origin master',
@@ -53,31 +50,15 @@ app.post('/git', (req, res) => {
   }
 })
 
-// Get transporter services
-const emailHost = process.env.EMAIL_HOST || 'smtp.gmail.com'
-const emailSecure = process.env.EMAIL_SECURE || true
-const emailPort = process.env.PORT || 465
-const emailPool = process.env.POOL || true
-
 app.use(express.static('public'))
 
-app.get('/', (request, response) => {
-  response.sendFile(path.join(__dirname, '/views/index.html'))
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
-const dict = {}
-dict['2013'] = b13
-dict['2014'] = b14
-dict['2015'] = b15
-dict['2016'] = b16
-dict['2017'] = b17
-dict['2018'] = b18
-dict['outsider'] = outs
-
 // Send the mail to the given email
-app.get('/sendmail/:username/:id', (request, response, next) => {
-  const username = request.params.username
-  const id = request.params.id
+app.get('/sendmail/:username/:id', (req, res, next) => {
+  const { username, id } = req.params
   const base64 = urlcrypt.cryptObj({
     email: id,
     username: username
@@ -88,25 +69,26 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
   axios.post(slackUrl)
 
   // Post invitation message on Slack
-  const time = Math.round((new Date()).getTime() / 1000)
+  const time = Math.round(new Date().getTime() / 1000)
   const message = `${username} got invited to iiitv organization on GitHub and Slack`
   const options = {
-    'text': 'Welcome to IIITV',
-    'attachments': [
+    text: 'Welcome to IIITV',
+    attachments: [
       {
-        'color': '#36a64f',
-        'title': 'Invitation from IIITV',
-        'title_link': 'https://github.com/orgs/iiitv/people',
-        'text': message,
-        'footer': 'Slack API',
-        'ts': time
+        color: '#36a64f',
+        title: 'Invitation from IIITV',
+        title_link: 'https://github.com/orgs/iiitv/people',
+        text: message,
+        footer: 'Slack API',
+        ts: time
       }
     ]
   }
 
-  function sendMessage () {
+  const sendMessage = () => {
     return new Promise((resolve, reject) => {
-      axios.post(webhookURL, JSON.stringify(options))
+      axios
+        .post(webhookURL, JSON.stringify(options))
         .then(response => {
           return resolve('SUCCESS: Sent slack webhook', response.data)
         })
@@ -128,39 +110,20 @@ app.get('/sendmail/:username/:id', (request, response, next) => {
       }
     }
   }
+
   loop()
 
-  const verificationurl = `https://${request.get('host')}/verify/${base64}`
+  const verificationurl = `https://${req.get('host')}/verify/${base64}`
 
-  var transporter = nodemailer.createTransport({
-    host: emailHost,
-    secure: emailSecure,
-    port: emailPort,
-    pool: emailPool,
-    auth: {
-      user: mail,
-      pass: password
-    }
-  })
-
-  const mailOptions = {
-    from: '"IIITV Coding Club" <codingclub@iiitv.ac.in>',
+  const msg = {
+    from: selfEmail,
+    bcc: selfEmail,
     to: id,
-    cc: mail,
-    subject: 'Invitation to join IIITV Organization on GitHub',
+    subject: 'Invitation to join IIITV OSS Team',
     html: createMail.createMail(username, verificationurl)
   }
 
-  transporter.sendMail(mailOptions, function (error, info) {
-    if (error) {
-      console.log(error)
-      response.send({ status: 500 })
-      response.end()
-    } else {
-      response.send({ status: 200 })
-      response.end()
-    }
-  })
+  sgMail.send(msg)
 })
 
 // Verify the email id through the link, and add as member
@@ -169,11 +132,11 @@ app.get('/verify/:base64', (request, response, next) => {
   try {
     const data = urlcrypt.decryptObj(encryptedData)
     addMember(data)
-      .then((status) => {
+      .then(status => {
         response.status(status)
         response.redirect('https://github.com/orgs/iiitv/teams')
       })
-      .catch((err) => {
+      .catch(err => {
         console.log(err)
         response.status(400).send('Error occured. Please try again later.')
         response.end()
@@ -184,42 +147,32 @@ app.get('/verify/:base64', (request, response, next) => {
 })
 
 // Add the member as per their email id
-const addMember = (data) => {
+const addMember = data => {
+  const { email, username } = data
+  const regex = RegExp('^20\d{7}@iiitv(adodara)?.ac.in$') // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
-    let pref = data.email.substring(0, 4)
-    const checkInsti = data.email.split('@')[1]
-    if (checkInsti === 'iiitv.ac.in' || checkInsti === 'iiitvadodara.ac.in') {
+    let pref = 'outsiders'
+    if (regex.test(email)) {
+      pref = `batch-of-${parseInt(email.substring(0, 4)) - 4}`
       console.log('IIITian')
-      const removeURL = `https://api.github.com/teams/${dict['outsider']}/memberships/${data.username}?access_token=${token}`
-      axios.delete(removeURL)
-        .then(response => {
-          console.log(response.data.url)
-          resolve(204)
-        })
-        .catch(error => {
-          reject(error)
-        })
-    } else {
-      pref = 'outsider'
     }
     console.log(pref)
-    const url = `https://api.github.com/teams/${dict[pref]}/memberships/${data.username}?access_token=${token}`
+    const url = `https://api.github.com/teams/${pref}/memberships/${username}?access_token=${token}`
     console.log(url)
 
-    axios.put(url)
-      .then(response => {
-        console.log(response.data.url)
+    axios
+      .put(url)
+      .then(res => {
+        console.log(res.data.url)
         resolve(200)
       })
       .catch(error => {
         reject(error)
       })
   })
-
   return promise
 }
 
-// listen for requests :)
 const listener = app.listen(3000 || process.env.PORT, () => {
   console.log(`Your app is listening on port ${listener.address().port}`)
 })
