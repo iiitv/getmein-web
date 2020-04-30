@@ -12,7 +12,7 @@
     "dotenv": "^8.0.0",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "path": "^0.12.7",
     "uikit": "^3.1.4",
     "url-crypt": "*"
