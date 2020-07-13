@@ -21,7 +21,7 @@ Your GitHub profile won't show you as a part of IIITV's organization. To make yo
 
 #### Next Steps
 
-* Join us on [Gitter](https://gitter.im/iiitv/general).
+* Join us on [Slack](https://join.slack.com/t/iiitvadodara/shared_invite/zt-ftkwqm9w-VX00~iwfLLQjFFvObuggFQ).
 * Add yourself to [`Members`](https://github.com/orgs/iiitv/teams/members) team if not already a member of it.
 * Join the [team](https://github.com/orgs/iiitv/teams) for your batch (`batch-of-20XX`).
 * Solve issues in [organisation's repositories](https://github.com/iiitv/repositories).
