@@ -59,12 +59,12 @@ app.post('/git', (req, res) => {
 
 app.use(express.static('public'))
 
-app.get('/', (req, res) => {
+app.get('/', (_req, res) => {
   res.sendFile(path.join(__dirname, '/views/index.html'))
 })
 
 // Send the mail to the given email
-app.get('/sendmail/:username/:id', (req, res, next) => {
+app.get('/sendmail/:username/:id', (req) => {
   const { username, id } = req.params
   const base64 = urlcrypt.cryptObj({
     email: id,
@@ -134,7 +134,7 @@ app.get('/sendmail/:username/:id', (req, res, next) => {
 })
 
 // Verify the email id through the link, and add as member
-app.get('/verify/:base64', (request, response, next) => {
+app.get('/verify/:base64', (request, response) => {
   const encryptedData = request.params.base64
   try {
     const data = urlcrypt.decryptObj(encryptedData)
@@ -158,17 +158,13 @@ const addMember = data => {
   const { email, username } = data
   const regex = /^20\d{7}@iiitv(adodara)?.ac.in$/; // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
-    let pref = 'outsiders'
-    if (regex.test(email)) {
-      pref = parseInt(email.substring(0, 4)) + 4
-      console.log('IIITian')
+    const pref = regex.test(email) ? parseInt(email.substring(0, 4)) + 4 : 'outsiders'
+    const url = `https://api.github.com/teams/${codes[pref]}/memberships/${username}`
+    const authHeaders = {
+      Authorization: `token ${token}`
     }
-    console.log(pref)
-    const url = `https://api.github.com/teams/${codes[pref]}/memberships/${username}?access_token=${token}`
-    console.log(url)
-
     axios
-      .put(url)
+      .put(url, authHeaders)
       .then(res => {
         console.log(res.data.url)
         resolve(200)
