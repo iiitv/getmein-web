@@ -49,7 +49,7 @@ npm start
 
 #### Configuration
 
-You can configure this application to use with your environment specified settings. Just copy these Environment variable to `.env` and make make necessary changes.
+You can configure this application to use with your environment specified settings. Just copy this Environment variable to `.env` and make necessary changes.
 Don't commit this `.env` file or remove it from `.gitignore` .
 
 #### Environment variables
