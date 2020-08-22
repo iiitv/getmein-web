@@ -18,7 +18,7 @@ const {
   token,
   selfEmail,
   codes,
-  orgId,
+  orgId
 } = require('./constants')
 
 app.use(bodyParser.json())
