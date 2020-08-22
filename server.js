@@ -17,7 +17,8 @@ const {
   webhookURL,
   token,
   selfEmail,
-  codes
+  codes,
+  orgId
 } = require('./constants')
 
 app.use(bodyParser.json())
@@ -159,12 +160,12 @@ const addMember = data => {
   const regex = /^20\d{7}@iiitv(adodara)?.ac.in$/; // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
     const pref = regex.test(email) ? parseInt(email.substring(0, 4)) + 4 : 'outsiders'
-    const url = `https://api.github.com/teams/${codes[pref]}/memberships/${username}`
-    const authHeaders = {
+    const url = `https://api.github.com/organizations/${orgId}/team/${codes[pref]}/memberships/${username}`
+    const headers = {
       Authorization: `token ${token}`
     }
     axios
-      .put(url, authHeaders)
+      .put(url, {}, { headers })
       .then(res => {
         console.log(res.data.url)
         resolve(200)
