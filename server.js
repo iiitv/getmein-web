@@ -158,7 +158,7 @@ const addMember = data => {
   const { email, username } = data
   const regex = /^20\d{7}@iiitv(adodara)?.ac.in$/; // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
-    const pref = regex.test(email) ? `batch-of-${parseInt(parseInt(email.substring(0, 4)) + 4)}` : 'outsiders'
+    const pref = regex.test(email) ? `batch-of-${parseInt(email.substring(0, 4)) + 4}` : 'outsiders'
     const url = `${githubApi}/orgs/iiitv/teams/${pref}/memberships/${username}`
     const headers = {
       Authorization: `token ${token}`
