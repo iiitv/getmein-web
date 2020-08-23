@@ -16,9 +16,7 @@ const {
   slack,
   webhookURL,
   token,
-  selfEmail,
-  codes,
-  orgId
+  selfEmail
 } = require('./constants')
 
 app.use(bodyParser.json())
@@ -159,8 +157,8 @@ const addMember = data => {
   const { email, username } = data
   const regex = /^20\d{7}@iiitv(adodara)?.ac.in$/; // eslint-disable-line
   const promise = new Promise((resolve, reject) => {
-    const pref = regex.test(email) ? parseInt(email.substring(0, 4)) + 4 : 'outsiders'
-    const url = `https://api.github.com/organizations/${orgId}/team/${codes[pref]}/memberships/${username}`
+    const pref = regex.test(email) ? 'batch-of-' + parseInt(parseInt(email.substring(0, 4)) + 4) : 'outsiders'
+    const url = `https://api.github.com/orgs/iiitv/teams/${pref}/memberships/${username}`
     const headers = {
       Authorization: `token ${token}`
     }
