@@ -164,7 +164,7 @@ window.showToast = function () {
   } else {
     // eslint-disable-next-line
     UIkit.notification({
-      message: `<span uk-icon='icon: check; ratio: 1.5'></span> <span class=\'uk-text-small\'>Thank You, Check your inbox for the invite.</span>`,
+      message: '<span uk-icon=\'icon: mail; ratio: 1.5\'></span> <span class=\'uk-text-small\'>Thank You, Check your inbox for the invite.</span>',
       status: 'success',
       pos: 'bottom-center',
       timeout: 2000
