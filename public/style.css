@@ -41,7 +41,7 @@ input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
 input:-webkit-autofill:active {
   transition: background-color 5000s ease-in-out 0s;
-  -webkit-text-fill-color: white;
+  background: transparent;
 }
 
 footer {
@@ -128,4 +128,11 @@ footer > a {
 .tgl-flat:checked + .tgl-btn:after {
   left: 50%;
   background: rgb(71, 71, 71);
+}
+
+#email{
+  background-color: rgba(255,255,255,.1);
+}
+#username{
+  background-color: rgba(255,255,255,.1);
 }
