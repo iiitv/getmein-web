@@ -7,14 +7,3 @@ $('#toggleTheme').on('change', () => {
     $('body').addClass('uk-section-secondary')
   }
 })
-
-// const toggleTheme = document.getElementById("toggleTheme")
-// const input = document.getElementById('email')
-
-// toggleTheme.addEventListener('click',()=>{
-//   if(toggleTheme.checked){
-//     input.style.backgroundColor = "white"
-//   }else{
-//     input.style.background = "black"
-//   }
-// })
