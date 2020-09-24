@@ -64,6 +64,10 @@ footer > a {
   color: #bbbbbb;
 }
 
+.repo-links {
+  display: inline;
+}
+
 /* Light mode button */
 
 .tgl {
