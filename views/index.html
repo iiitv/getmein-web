@@ -1,129 +1,113 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Welcome to IIITV</title>
-    <meta name="description" content="Portal to get an invite to IIITV Github
+
+<head>
+  <title>Welcome to IIITV</title>
+  <meta name="description" content="Portal to get an invite to IIITV Github
       organization">
-    <link id="favicon" rel="icon"
-      href="https://avatars3.githubusercontent.com/u/9347727?s=200&v=4"
-      type="image/png">
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- UIkit CSS -->
-    <link rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css"
-      />
-    <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC"
-      rel="stylesheet">
+  <link id="favicon" rel="icon" href="https://avatars3.githubusercontent.com/u/9347727?s=200&v=4" type="image/png">
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- UIkit CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/css/uikit.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Noto+Sans+SC" rel="stylesheet">
 
-    <!-- UIkit JS -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
+  <!-- UIkit JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/uikit/3.0.0-rc.16/js/uikit-icons.min.js"></script>
 
-    <!-- Preload CSS -->
-    <link rel="preload" href="/style.css" as="stylesheet">
-    <link rel="preload" href="/github-corner.css" as="stylesheet">
-    
-    <!-- Include CSS -->
-    <link rel="stylesheet" href="/style.css">
-    <link rel="stylesheet" href="/github-corner.css">
-  </head>
-  
-  <!-- GitHub Corner -->
-  <a href="http://git.io/iiitv" class="github-corner" aria-label="View source on
+  <!-- Preload CSS -->
+  <link rel="preload" href="/style.css" as="stylesheet">
+  <link rel="preload" href="/github-corner.css" as="stylesheet">
+
+  <!-- Include CSS -->
+  <link rel="stylesheet" href="/style.css">
+  <link rel="stylesheet" href="/github-corner.css">
+</head>
+
+<!-- GitHub Corner -->
+<a href="http://git.io/iiitv" target="_blank" class="github-corner" aria-label="View source on
     GitHub">
-    <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513;
-      color:#fff; position: absolute; top: 0; border: 0; right: 0;"
-      aria-hidden="true">
-      <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
-      <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7
+  <svg width="80" height="80" viewBox="0 0 250 250" style="fill:#151513;
+      color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true">
+    <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+    <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7
         120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9
-        125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
-        fill="currentColor" style="transform-origin: 130px 106px;"
-        class="octo-arm"></path>
-      <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6
+        125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor"
+      style="transform-origin: 130px 106px;" class="octo-arm"></path>
+    <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6
         C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0
         C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1
         C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4
         C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9
         C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5
         C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9
-        152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
-        fill="currentColor" class="octo-body"></path></svg>
-  </a>
-  <body class="uk-section uk-section-secondary uk-margin-remove">
-    <input class="tgl tgl-flat" id="toggleTheme" type="checkbox"/>
-    <label class="tgl-btn" for="toggleTheme"></label>
+        152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"></path>
+  </svg>
+</a>
 
-    <!-- Header -->
-    <header class="uk-text-center uk-align-center uk-width-1-1">
-      <img src="https://avatars3.githubusercontent.com/u/9347727?s=150&v=4">
-      <div class="uk-text-center uk-text-large uk-text-bold">
-        GetMeIn
-      </div>
-    </header>
+<body class="uk-section uk-section-secondary uk-margin-remove">
+  <input class="tgl tgl-flat" id="toggleTheme" type="checkbox" />
+  <label class="tgl-btn" for="toggleTheme"></label>
 
-    <!-- Main -->
-    <main>
-      <div class="uk-container uk-align-center uk-text-center">
-        <form class="uk-card uk-inline uk-legend uk-width-auto">
-          <div class="uk-margin">
-            <div class="uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: user"></span>
-              <input style="-webkit-text-fill-color: rgba(50,210,150);" class="uk-input uk-border-pill uk-text-small" type="text"
-                id="username"
-                maxlength="39"
-                spellcheck="false"
-                placeholder="GitHub username" required>
-            </div>
+  <!-- Header -->
+  <header class="uk-text-center uk-align-center uk-width-1-1">
+    <img src="https://avatars3.githubusercontent.com/u/9347727?s=150&v=4">
+    <div class="uk-text-center uk-text-large uk-text-bold">
+      GetMeIn
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main>
+    <div class="uk-container uk-align-center uk-text-center">
+      <form class="uk-card uk-inline uk-legend uk-width-auto">
+        <div class="uk-margin">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: user"></span>
+            <input style="-webkit-text-fill-color: rgba(50,210,150);" class="uk-input uk-border-pill uk-text-small"
+              type="text" id="username" maxlength="39" spellcheck="false" placeholder="GitHub username" required>
           </div>
-          <div style="-webkit-text-fill-color: rgba(50,210,150);" class="uk-margin uk-margin-remove-bottom">
-            <div class="uk-inline">
-              <span class="uk-form-icon" uk-icon="icon: mail"></span>
-              <input class="uk-input uk-border-pill uk-text-small" type="email"
-                id="email"
-                maxlength="100"
-                spellcheck="false"
-                placeholder="Email" required>
-            </div>
+        </div>
+        <div style="-webkit-text-fill-color: rgba(50,210,150);" class="uk-margin uk-margin-remove-bottom">
+          <div class="uk-inline">
+            <span class="uk-form-icon" uk-icon="icon: mail"></span>
+            <input class="uk-input uk-border-pill uk-text-small" type="email" id="email" maxlength="100"
+              spellcheck="false" placeholder="Email" required>
           </div>
-          <span class="uk-text-meta uk-text-warning uk-text-center">PS: Please
-            use
-            your educational email address</span>
-          <br>
-          <button class="uk-button uk-margin-top uk-border-pill
-            uk-button-default"
-            type="submit" onclick="showToast()">Submit</button>
-        </form>
-      </div>
-      <div class="message uk-text-center uk-text-success"></div>
-    </main>
+        </div>
+        <span class="uk-text-meta uk-text-warning uk-text-center">PS: Please
+          use
+          your educational email address</span>
+        <br>
+        <button class="uk-button uk-margin-top uk-border-pill
+            uk-button-default" type="submit" onclick="showToast()">Submit</button>
+      </form>
+    </div>
+    <div class="message uk-text-center uk-text-success"></div>
+  </main>
 
 
-    <footer class="uk-align-center uk-text-center">
-      <hr class="uk-divider-icon">
-      <a uk-tooltip="title: GitHub; pos: left" class="uk-icon-button
-        uk-margin-small-right" href="https://git.io/iiitv" uk-icon="github"></a>
-      <a uk-tooltip="title: Facebook; pos: top" class="uk-icon-button
-        uk-margin-small-right" href="https://fb.com/iiitvcc" uk-icon="facebook"></a>
-      <a uk-tooltip="title: LinkedIn; pos: top" class="uk-icon-button
-        uk-margin-small-right" href="https://www.linkedin.com/company/iiitvcc/"
-        uk-icon="linkedin"></a>
-      <a uk-tooltip="title: Twitter; pos: top"
-        class="uk-icon-button uk-margin-small-right"
-        href="https://twitter.com/iiitvcc" uk-icon="twitter"></a>
-      <a uk-tooltip="title: Drop an email; pos: right" class="uk-icon-button
-        uk-margin-small-right" href="mailto:codingclub@iiitv.ac.in"
-        uk-icon="mail"></a>
-    </footer>
+  <footer class="uk-align-center uk-text-center">
+    <hr class="uk-divider-icon">
+    <a uk-tooltip="title: GitHub; pos: left" class="uk-icon-button
+        uk-margin-small-right" href="https://git.io/iiitv" target="_blank" uk-icon="github"></a>
+    <a uk-tooltip="title: Facebook; pos: top" class="uk-icon-button
+        uk-margin-small-right" href="https://fb.com/iiitvcc" target="_blank" uk-icon="facebook"></a>
+    <a uk-tooltip="title: LinkedIn; pos: top" class="uk-icon-button
+        uk-margin-small-right" href="https://www.linkedin.com/company/iiitvcc/" target="_blank" uk-icon="linkedin"></a>
+    <a uk-tooltip="title: Twitter; pos: top" class="uk-icon-button uk-margin-small-right"
+      href="https://twitter.com/iiitvcc" target="_blank" uk-icon="twitter"></a>
+    <a uk-tooltip="title: Drop an email; pos: right" class="uk-icon-button
+        uk-margin-small-right" href="mailto:codingclub@iiitv.ac.in" target="_blank" uk-icon="mail"></a>
+  </footer>
 
-    <!-- Your web-app is https, so your scripts need to be too -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="crossorigin="anonymous"></script>
-    <script defer src="/client.js"></script>
-    <script defer src="/darkmode.js"></script>
-  </body>
+  <!-- Your web-app is https, so your scripts need to be too -->
+  <script src="https://code.jquery.com/jquery-2.2.1.min.js"
+    integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00=" crossorigin="anonymous"></script>
+  <script defer src="/client.js"></script>
+  <script defer src="/darkmode.js"></script>
+</body>
+
 </html>
