@@ -24,25 +24,30 @@ $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
     // https://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
-    const profile = 'https://aashutoshrathi.glitch.me/api/gh/' + username.val()
-    fetch(profile)
-      .then(response => response.json())
-      .then(data => {
-        if (data.message) {
-          username.css({
-            color: '#f0506e',
-            'border-color': '#f0506e'
-          })
-        } else {
-          username.css({
-            color: '#32d296',
-            'border-color': '#32d296'
-          })
-        }
-      })
-      .catch(e => {
-        console.log(e)
-      })
+    const profile = 'https://cors-anywhere.herokuapp.com/https://api.aashutosh.dev/' + username.val()
+    fetch(profile, {
+      mode: 'cors',
+      headers: {
+      'Access-Control-Allow-Origin':'*'
+      }
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data.message) {
+        username.css({
+          color: '#f0506e',
+          'border-color': '#f0506e'
+        })
+      } else {
+        username.css({
+          color: '#32d296',
+          'border-color': '#32d296'
+        })
+      }
+    })
+    .catch(e => {
+      console.log(e)
+    })
   } else {
     username.css({
       'color': '#32d296',
@@ -84,7 +89,7 @@ $(function () {
     event.preventDefault()
     const username = $('#username').val()
     const email = $('#email').val()
-    fetch(`https://api.github.com/search/users?q=${username}`)
+    fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/search/users?q=${username}`)
       .then(res => res.json())
       .then((out) => {
         if (out.total_count === 1) {
@@ -151,7 +156,7 @@ window.showToast = function () {
     })
   } else if (email === '' || username === '') {
     var empty = 'Email'
-    if (username.length === 0) {
+    if (!username.length) {
       empty = 'Username'
     }
     // eslint-disable-next-line
