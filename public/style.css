@@ -45,8 +45,8 @@ input:-webkit-autofill:active {
 }
 
 .repo-links {
-  display: inline;
-  margin: 1rem;
+  position: relative;
+  margin-top: 15px;
 }
 
 footer {
