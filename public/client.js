@@ -23,8 +23,7 @@ var validateEmail = function (emailValue) {
 $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
-    // https://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
-    const profile = 'https://cors-anywhere.herokuapp.com/https://api.aashutosh.dev/gh/' + username.val()
+    const profile = 'https://api.aashutosh.dev/gh/' + username.val()
     fetch(profile)
       .then(response => response.json())
       .then(data => {
@@ -85,7 +84,7 @@ $(function () {
     event.preventDefault()
     const username = $('#username').val()
     const email = $('#email').val()
-    fetch(`https://cors-anywhere.herokuapp.com/https://api.github.com/search/users?q=${username}`)
+    fetch(`https://api.github.com/search/users?q=${username}`)
       .then(res => res.json())
       .then((out) => {
         if (out.total_count === 1) {
