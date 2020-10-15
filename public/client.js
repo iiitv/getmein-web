@@ -23,11 +23,10 @@ var validateEmail = function (emailValue) {
 $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
-    const profile = 'https://api.aashutosh.dev/gh/' + username.val()
+    const profile = `https://api.aashutosh.dev/gh/` + username.val()
     fetch(profile)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         if (data.error) {
           username.css({
             color: '#f0506e',
