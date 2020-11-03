@@ -23,12 +23,11 @@ var validateEmail = function (emailValue) {
 $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
-    // https://aashutoshrathi.glitch.me/api/gh/ to increase API calls without 403.
-    const profile = 'https://aashutoshrathi.glitch.me/api/gh/' + username.val()
+    const profile = `https://api.aashutosh.dev/gh/${username.val()}`
     fetch(profile)
       .then(response => response.json())
       .then(data => {
-        if (data.message) {
+        if (data.error) {
           username.css({
             color: '#f0506e',
             'border-color': '#f0506e'
