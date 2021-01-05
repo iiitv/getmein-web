@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@sendgrid/mail": "^6.4.0",
-    "axios": "^0.18.1",
+    "axios": "^0.21.1",
     "dotenv": "^8.2.0",
     "express": "^4.16.3",
     "gh-account-exists": "^0.1.0",
