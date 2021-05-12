@@ -2,7 +2,7 @@ const createMail = (username, email) => {
   return `
     <!DOCTYPE html>
     <html lang='en'>
-    
+
     <head>
         <meta charset='UTF-8'>
         <meta name='viewport' content='width=device-width, initial-scale=1.0'>
@@ -13,11 +13,11 @@ const createMail = (username, email) => {
             * {
                 margin: 0px;
             }
-            
+
             #root {
                 width: 100%;
             }
-            
+
             body {
                 color: rgb(68, 68, 68);
                 -webkit-font-smoothing: antialiased;
@@ -33,33 +33,33 @@ const createMail = (username, email) => {
                     Arial,
                     sans-serif;
             }
-            
+
             #header {
                 width: 100%;
             }
-            
+
             #brand-logo {
                 width: 4.5rem;
                 height: 4.5rem;
             }
-            
+
             #brand-logo-cont {
                 width: max-content;
                 margin: 0 auto;
             }
-            
+
             h2,
             p,
             h3,
             h4 {
                 text-align: center;
             }
-            
+
             .divider {
                 width: 20%;
                 margin: 5px auto;
             }
-            
+
             main,
             footer {
                 width: 60%;
@@ -67,7 +67,7 @@ const createMail = (username, email) => {
                 padding: 10px;
                 text-align: center;
             }
-            
+
             #verify {
                 display: block;
                 padding: 10px 20px;
@@ -82,32 +82,32 @@ const createMail = (username, email) => {
                 width: max-content;
                 text-decoration: none;
             }
-            
+
             #verify:hover {
                 box-shadow: 3px 3px 20px 2px grey;
                 cursor: pointer;
                 background-color: rgb(46, 196, 0);
             }
-            
+
             #verify:active {
                 box-shadow: 3px 3px 20px 0px grey;
                 cursor: pointer;
                 background-color: rgb(18, 77, 0);
             }
-            
+
             .social-link {
                 text-decoration: none;
                 font-size: 15px;
                 color: rgb(38, 102, 141);
             }
-            
+
             .image {
                 margin-top: 10px;
                 width: 35px;
                 height: 35px;
                 border-radius: 5px;
             }
-            
+
             .image:hover {
                 width: 40px;
                 height: 40px;
@@ -115,7 +115,7 @@ const createMail = (username, email) => {
                 box-shadow: 3px 3px 20px 2px grey;
                 overflow: hidden;
             }
-            
+
             .divide {
                 margin-left: -5px;
                 margin-right: -5px;
@@ -124,7 +124,7 @@ const createMail = (username, email) => {
             }
         </style>
     </head>
-    
+
     <body>
         <div id='root'>
             <div id='header'>
@@ -139,6 +139,7 @@ const createMail = (username, email) => {
                 <br>
                 <p>Click on the (Verify e-mail) button below to verify your Identity,<br>and you are good to go!</p>
                 <a href='${email}' id='verify'>Verify e-mail</a>
+                <p>Join us on Discord on our <a href="https://discord.gg/DaP5GvB" target="_blank" rel="noopener noreferrer">DSC IIITV</a> and <a href="https://discord.gg/6bpEt2c" target="_blank" rel="noopener noreferrer">IIITCCC</a> servers.</p>
                 <p>With regards,<br>IIITV Open Source Organization</p>
             </main>
             <hr class='divider' />
@@ -157,11 +158,11 @@ const createMail = (username, email) => {
                 </a>
                 <br><br>
                 <font size="0.5">If you have any questions, you can contact us at : <a href="mailto:codingclub@iiitvadodara.ac.in">codingclub@iiitvadodara.ac.in</a></font>
-    
+
             </footer>
         </div>
     </body>
-    
+
     </html> `
 }
 module.exports.createMail = createMail
