@@ -81,16 +81,26 @@ $.put = function (url, data, callback, type) {
 $(function () {
   $('form').submit(function (event) {
     event.preventDefault()
+
+    // BUG FIX - 1
+    // Here the testcase for more than 1 total_count wasnt present better we can use a for loop for that
     const username = $('#username').val()
     const email = $('#email').val()
     fetch(`https://api.github.com/search/users?q=${username}`)
       .then(res => res.json())
       .then((out) => {
-        if (out.total_count === 1) {
-          fetch(`/sendmail/${username}/${email}`)
+        // find the user with username in the api if not found then send error
+        console.log("OUTPUT OF GITHUB API: ", out);
+        var flag = false;
+
+        for(let i=0; i<out.total_count; i++){
+          if(out.items[i].login === username){
+            flag = true;
+            fetch(`/sendmail/${username}/${email}`)
             .then((res) => {
               if (res.status === 200) {
                 // eslint-disable-next-line
+                console.log("RES: ", res);
                 UIkit.notification({
                   message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
                   status: 'success',
@@ -109,20 +119,56 @@ $(function () {
                 timeout: 1000
               })
             })
-        } else if (out.total_count === 0) {
-          // eslint-disable-next-line
-          UIkit.notification({
-            message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Wrong Username</span>',
-            status: 'danger',
-            pos: 'top-center',
-            timeout: 1500
-          })
-          $('#username').css({
-            color: '#f0506e',
-            'border-color': '#f0506e'
-          })
-          // setTimeout("location.reload(true);", 2000);
+            break;
+          }
+
+          if(!flag){
+            // eslint-disable-next-line
+            UIkit.notification({
+              message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>Username not found.</span>',
+              status: 'danger',
+              pos: 'top-center',
+              timeout: 1000
+            })
+          }
         }
+        // if (out.total_count === 1) {
+        //   fetch(`/sendmail/${username}/${email}`)
+        //     .then((res) => {
+        //       if (res.status === 200) {
+        //         // eslint-disable-next-line
+        //         UIkit.notification({
+        //           message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
+        //           status: 'success',
+        //           pos: 'top-center',
+        //           timeout: 2000
+        //         })
+        //       }
+        //     })
+        //     .catch((e) => {
+        //       console.error(e)
+        //       // eslint-disable-next-line
+        //       UIkit.notification({
+        //         message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
+        //         status: 'danger',
+        //         pos: 'top-center',
+        //         timeout: 1000
+        //       })
+        //     })
+        // } else if (out.total_count === 0) {
+        //   // eslint-disable-next-line
+        //   UIkit.notification({
+        //     message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Wrong Username</span>',
+        //     status: 'danger',
+        //     pos: 'top-center',
+        //     timeout: 1500
+        //   })
+        //   $('#username').css({
+        //     color: '#f0506e',
+        //     'border-color': '#f0506e'
+        //   })
+        //   // setTimeout("location.reload(true);", 2000);
+        // }
       }).catch((err) => {
         console.error(err)
         // eslint-disable-next-line
