@@ -21,7 +21,6 @@ const {
 } = require('./constants')
 
 app.use(bodyParser.json())
-console.log("SG API KEY: ", process.env.SG_TOKEN);
 sgMail.setApiKey(process.env.SG_TOKEN)
 
 // Auto-update Glitch with GitHub
@@ -66,62 +65,12 @@ app.get('/', (_req, res) => {
 
 // Send the mail to the given email
 app.get('/sendmail/:username/:id', (req) => {
-  const { username, id } = req.params
-  console.log("WE ARE IN THE API CALL: ", username, id);
+  const { username, id } = req.params;
+
   const base64 = urlcrypt.cryptObj({
     email: id,
     username: username
   })
-  
-  // TODO -> Improve the deprecated slack feature
-  // // Invite to Slack
-  // const slackUrl = `https://slack.com/api/users.admin.invite?token=${slack}&email=${id}`
-  // axios.post(slackUrl)
-
-  // // Post invitation message on Slack
-  // const time = Math.round(new Date().getTime() / 1000)
-  // const message = `${username} got invited to iiitv organization on GitHub and Slack`
-  // const options = {
-  //   text: 'Welcome to IIITV',
-  //   attachments: [
-  //     {
-  //       color: '#36a64f',
-  //       title: 'Invitation from IIITV',
-  //       title_link: 'https://github.com/orgs/iiitv/people',
-  //       text: message,
-  //       footer: 'Slack API',
-  //       ts: time
-  //     }
-  //   ]
-  // }
-
-  // const sendMessage = () => {
-  //   return new Promise((resolve, reject) => {
-  //     axios
-  //       .post(webhookURL, JSON.stringify(options))
-  //       .then(response => {
-  //         return resolve('SUCCESS: Sent slack webhook', response.data)
-  //       })
-  //       .catch(error => {
-  //         return reject(new Error('FAILED: Sent slack webhook', error))
-  //       })
-  //   })
-  // }
-
-  // const loop = async () => {
-  //   for (let i = 0; i < 3; i++) {
-  //     console.log('retrying sending message ', i)
-  //     try {
-  //       const res = await sendMessage()
-  //       console.log(res)
-  //       break
-  //     } catch (err) {
-  //       console.log(err)
-  //     }
-  //   }
-  // }
-
-  // loop()
 
   const verificationurl = `https://${req.get('host')}/verify/${base64}`
 
