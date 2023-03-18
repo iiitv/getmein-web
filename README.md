@@ -57,18 +57,13 @@ Don't commit this `.env` file or remove it from `.gitignore` .
 | VAR                    | DESCRIPTION                      | VALUES | DEFAULT |
 | ---------------------- | -------------------------------- | ------ | ------- |
 | SECRET                 | Your GitHub Token                | -      | -       |
-| SLACK_TOKEN            | Slack Token                      | -      | -       |
-| INVITE_CHANNEL_WEBHOOK | Webhook for Slack channel invite | -      | -       |
-| SG_TOKEN               | Sendgrid token for email         | -      | -       |
+| GMAIL_KEY              | Gmail token for email            | -      | -       |
 
 ### Stargazers over time📈
 
 [![Stargazers over time](https://starchart.cc/iiitv/getmein-web.svg)](https://starchart.cc/iiitv/getmein-web)
 
 <h1 align='center'>
-<a href="https://www.facebook.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124010.svg"></a>
-<a href="https://www.linkedin.com/company/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124011.svg"></a>
-<a href="https://twitter.com/iiitvcc/"><img width="50px" src="https://image.flaticon.com/icons/svg/124/124021.svg"></a>
 <a href="mailto:codingclub@iiitvadodara.ac.in"><img width="50px" src="https://cdn2.iconfinder.com/data/icons/social-icons-color/512/gmail-512.png"></a>
 </h1>
 <p align='center'>Made With ❤ By IIITV Coding Club</p>
