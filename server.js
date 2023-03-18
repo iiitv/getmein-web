@@ -22,7 +22,7 @@ const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
     user: selfEmail,
-    pass: process.env.gmail_key
+    pass: process.env.GMAIL_KEY
   }
 })
 
