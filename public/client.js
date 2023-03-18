@@ -1,175 +1,175 @@
-$ ('#email').keyup (function () {
-  const email = $ ('#email');
-  if (email.val ()) {
-    if (!validateEmail (email.val ())) {
-      email.css ({
+$('#email').keyup(function () {
+  const email = $('#email')
+  if (email.val()) {
+    if (!validateEmail(email.val())) {
+      email.css({
         color: '#f0506e',
-        'border-color': '#f0506e',
-      });
+        'border-color': '#f0506e'
+      })
     } else {
-      email.css ({
+      email.css({
         color: '#32d296',
-        'border-color': '#32d296',
-      });
+        'border-color': '#32d296'
+      })
     }
   }
-});
+})
 
 var validateEmail = function (emailValue) {
-  var regex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/;
-  return regex.test (emailValue);
-};
+  var regex = /^\w+([-]?\w+)*@\w+([-]?\w+)*(\.\w{2,3})+$/
+  return regex.test(emailValue)
+}
 
-$ ('#username').keyup (function () {
-  const username = $ ('#username');
-  if (username.val ()) {
-    const profile = `https://api.aashutosh.dev/gh/${username.val ()}`;
-    fetch (profile)
-      .then (response => response.json ())
-      .then (data => {
+$('#username').keyup(function () {
+  const username = $('#username')
+  if (username.val()) {
+    const profile = `https://api.aashutosh.dev/gh/${username.val()}`
+    fetch(profile)
+      .then(response => response.json())
+      .then(data => {
         if (data.error) {
-          username.css ({
+          username.css({
             color: '#f0506e',
-            'border-color': '#f0506e',
-          });
+            'border-color': '#f0506e'
+          })
         } else {
-          username.css ({
+          username.css({
             color: '#32d296',
-            'border-color': '#32d296',
-          });
+            'border-color': '#32d296'
+          })
         }
       })
-      .catch (e => {
-        console.log (e);
-      });
+      .catch(e => {
+        console.log(e)
+      })
   } else {
-    username.css ({
+    username.css({
       color: '#32d296',
-      'border-color': '#32d296',
-    });
+      'border-color': '#32d296'
+    })
   }
-});
+})
 
 window.getStatus = function (url) {
-  const request = new XMLHttpRequest ();
+  const request = new XMLHttpRequest()
   request.onreadystatechange = function () {
     if (request.readyState === 2) {
-      return request.status;
+      return request.status
       // this contains the status code
     }
-  };
-  request.open ('GET', url, true);
-  request.send ();
-};
+  }
+  request.open('GET', url, true)
+  request.send()
+}
 
 $.put = function (url, data, callback, type) {
-  if ($.isFunction (data)) {
-    type = type || callback;
-    callback = data;
-    data = {};
+  if ($.isFunction(data)) {
+    type = type || callback
+    callback = data
+    data = {}
   }
 
-  return $.ajax ({
+  return $.ajax({
     url: url,
     type: 'PUT',
     success: callback,
     data: data,
-    contentType: type,
-  });
-};
+    contentType: type
+  })
+}
 
-$ (function () {
-  $ ('form').submit (function (event) {
-    event.preventDefault ();
+$(function () {
+  $('form').submit(function (event) {
+    event.preventDefault()
 
-    const username = $ ('#username').val ();
-    const email = $ ('#email').val ();
-    fetch (`https://api.github.com/users/${username}`)
-      .then (res => res.json ())
-      .then (out => {
+    const username = $('#username').val()
+    const email = $('#email').val()
+    fetch(`https://api.github.com/users/${username}`)
+      .then(res => res.json())
+      .then(out => {
         if (out.message && out.message === 'Not Found') {
           // eslint-disable-next-line
           UIkit.notification ({
-            message: "<span class='uk-text-small' uk-icon='icon: warning'>Username not found.</span>",
+            message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>Username not found.</span>',
             status: 'danger',
             pos: 'top-center',
-            timeout: 1000,
-          });
+            timeout: 1000
+          })
         } else {
-          fetch (`/sendmail/${username}/${email}`)
-            .then (res => {
+          fetch(`/sendmail/${username}/${email}`)
+            .then(res => {
               if (res.status === 200) {
                 // eslint-disable-next-line
                 UIkit.notification ({
-                  message: "<span class='uk-text-small' uk-icon='icon: thumbs-up'>A verification E-mail has been sent.</span>",
+                  message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
                   status: 'success',
                   pos: 'top-center',
-                  timeout: 2000,
-                });
+                  timeout: 2000
+                })
               }
             })
-            .catch (e => {
-              console.error (e);
+            .catch(e => {
+              console.error(e)
               // eslint-disable-next-line
               UIkit.notification ({
-                message: "<span class='uk-text-small' uk-icon='icon: warning'>An error occured. Please try again later.</span>",
+                message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
                 status: 'danger',
                 pos: 'top-center',
-                timeout: 1000,
-              });
-            });
+                timeout: 1000
+              })
+            })
         }
       })
-      .catch (err => {
-        console.error (err);
+      .catch(err => {
+        console.error(err)
         // eslint-disable-next-line
         UIkit.notification ({
-          message: "<span class='uk-text-small' uk-icon='icon: warning'>An error occured. Please try again later.</span>",
+          message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
           status: 'danger',
           pos: 'top-center',
-          timeout: 1000,
-        });
-      });
-  });
-});
+          timeout: 1000
+        })
+      })
+  })
+})
 
 window.showToast = async function () {
-  const username = $ ('#username').val ();
-  const email = $ ('#email').val ();
+  const username = $('#username').val()
+  const email = $('#email').val()
   if (username === '' && email === '') {
     // eslint-disable-next-line
     UIkit.notification ({
-      message: "<span uk-icon='icon: warning'></span> <span class='uk-text-small'>Email and Username are required fields</span>",
+      message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Email and Username are required fields</span>',
       status: 'danger',
       pos: 'top-center',
-      timeout: 2000,
-    });
+      timeout: 2000
+    })
   } else if (email === '' || username === '') {
-    var empty = 'Email';
+    var empty = 'Email'
     if (username.length === 0) {
-      empty = 'Username';
+      empty = 'Username'
     }
     // eslint-disable-next-line
     UIkit.notification ({
       message: `<span uk-icon='icon: warning'></span> <span class='uk-text-small'>${empty} is required field.</span>`,
       status: 'danger',
       pos: 'top-center',
-      timeout: 1500,
-    });
+      timeout: 1500
+    })
   } else {
     // eslint-disable-next-line
     fetch (`https://api.github.com/users/${username}`)
-      .then (res => res.json ())
-      .then (out => {
+      .then(res => res.json())
+      .then(out => {
         if (!(out.message && out.message === 'Not Found')) {
           // eslint-disable-next-line
           UIkit.notification ({
-            message: "<span uk-icon='icon: mail; ratio: 1.5'></span> <span class='uk-text-small'>Thank You, Check your inbox for the invite.</span>",
+            message: '<span uk-icon=\'icon: mail; ratio: 1.5\'></span> <span class=\'uk-text-small\'>Thank You, Check your inbox for the invite.</span>',
             status: 'success',
             pos: 'bottom-center',
-            timeout: 2000,
-          });
+            timeout: 2000
+          })
         }
-      });
+      })
   }
-};
+}

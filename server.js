@@ -10,18 +10,23 @@ const createMail = require('./createmail')
 const urlcrypt = require('url-crypt')(
   '~{ry*I)44==yU/]9<7DPk!Hj"R#:-/Z7(hTBnlRS=4CXF'
 )
-const sgMail = require('@sendgrid/mail')
+const nodemailer = require('nodemailer')
 const {
   glitch,
-  slack,
-  webhookURL,
   token,
   selfEmail,
   githubApi
 } = require('./constants')
 
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: selfEmail,
+    pass: process.env.gmail_key
+  }
+})
+
 app.use(bodyParser.json())
-sgMail.setApiKey(process.env.SG_TOKEN)
 
 // Auto-update Glitch with GitHub
 app.post('/git', (req, res) => {
@@ -65,7 +70,7 @@ app.get('/', (_req, res) => {
 
 // Send the mail to the given email
 app.get('/sendmail/:username/:id', (req) => {
-  const { username, id } = req.params;
+  const { username, id } = req.params
 
   const base64 = urlcrypt.cryptObj({
     email: id,
@@ -74,23 +79,21 @@ app.get('/sendmail/:username/:id', (req) => {
 
   const verificationurl = `https://${req.get('host')}/verify/${base64}`
 
-  const msg = {
+  const mailOptions = {
     from: selfEmail,
-    bcc: selfEmail,
     to: id,
     subject: 'Invitation to join IIITV OSS Team',
     html: createMail.createMail(username, verificationurl)
   }
 
-  sgMail
-  .send(msg)
-  .then(() => {
-    console.log('Email sent')
-  })
-  .catch((error) => {
-    console.error("Error", error);
-  })
-});
+  transporter.sendMail(mailOptions)
+    .then((info) => {
+      console.log('Email Sent: ' + info.response)
+    })
+    .catch((err) => {
+      console.error(err)
+    })
+})
 
 // Verify the email id through the link, and add as member
 app.get('/verify/:base64', (request, response) => {
