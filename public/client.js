@@ -3,12 +3,12 @@ $('#email').keyup(function () {
   if (email.val()) {
     if (!validateEmail(email.val())) {
       email.css({
-        'color': '#f0506e',
+        color: '#f0506e',
         'border-color': '#f0506e'
       })
     } else {
       email.css({
-        'color': '#32d296',
+        color: '#32d296',
         'border-color': '#32d296'
       })
     }
@@ -44,7 +44,7 @@ $('#username').keyup(function () {
       })
   } else {
     username.css({
-      'color': '#32d296',
+      color: '#32d296',
       'border-color': '#32d296'
     })
   }
@@ -81,17 +81,26 @@ $.put = function (url, data, callback, type) {
 $(function () {
   $('form').submit(function (event) {
     event.preventDefault()
+
     const username = $('#username').val()
     const email = $('#email').val()
-    fetch(`https://api.github.com/search/users?q=${username}`)
+    fetch(`https://api.github.com/users/${username}`)
       .then(res => res.json())
-      .then((out) => {
-        if (out.total_count === 1) {
+      .then(out => {
+        if (out.message && out.message === 'Not Found') {
+          // eslint-disable-next-line
+          UIkit.notification ({
+            message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>Username not found.</span>',
+            status: 'danger',
+            pos: 'top-center',
+            timeout: 1000
+          })
+        } else {
           fetch(`/sendmail/${username}/${email}`)
-            .then((res) => {
+            .then(res => {
               if (res.status === 200) {
                 // eslint-disable-next-line
-                UIkit.notification({
+                UIkit.notification ({
                   message: '<span class=\'uk-text-small\' uk-icon=\'icon: thumbs-up\'>A verification E-mail has been sent.</span>',
                   status: 'success',
                   pos: 'top-center',
@@ -99,34 +108,22 @@ $(function () {
                 })
               }
             })
-            .catch((e) => {
+            .catch(e => {
               console.error(e)
               // eslint-disable-next-line
-              UIkit.notification({
+              UIkit.notification ({
                 message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
                 status: 'danger',
                 pos: 'top-center',
                 timeout: 1000
               })
             })
-        } else if (out.total_count === 0) {
-          // eslint-disable-next-line
-          UIkit.notification({
-            message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Wrong Username</span>',
-            status: 'danger',
-            pos: 'top-center',
-            timeout: 1500
-          })
-          $('#username').css({
-            color: '#f0506e',
-            'border-color': '#f0506e'
-          })
-          // setTimeout("location.reload(true);", 2000);
         }
-      }).catch((err) => {
+      })
+      .catch(err => {
         console.error(err)
         // eslint-disable-next-line
-        UIkit.notification({
+        UIkit.notification ({
           message: '<span class=\'uk-text-small\' uk-icon=\'icon: warning\'>An error occured. Please try again later.</span>',
           status: 'danger',
           pos: 'top-center',
@@ -136,13 +133,12 @@ $(function () {
   })
 })
 
-window.showToast = function () {
+window.showToast = async function () {
   const username = $('#username').val()
   const email = $('#email').val()
-
   if (username === '' && email === '') {
     // eslint-disable-next-line
-    UIkit.notification({
+    UIkit.notification ({
       message: '<span uk-icon=\'icon: warning\'></span> <span class=\'uk-text-small\'>Email and Username are required fields</span>',
       status: 'danger',
       pos: 'top-center',
@@ -154,7 +150,7 @@ window.showToast = function () {
       empty = 'Username'
     }
     // eslint-disable-next-line
-    UIkit.notification({
+    UIkit.notification ({
       message: `<span uk-icon='icon: warning'></span> <span class='uk-text-small'>${empty} is required field.</span>`,
       status: 'danger',
       pos: 'top-center',
@@ -162,11 +158,18 @@ window.showToast = function () {
     })
   } else {
     // eslint-disable-next-line
-    UIkit.notification({
-      message: '<span uk-icon=\'icon: mail; ratio: 1.5\'></span> <span class=\'uk-text-small\'>Thank You, Check your inbox for the invite.</span>',
-      status: 'success',
-      pos: 'bottom-center',
-      timeout: 2000
-    })
+    fetch (`https://api.github.com/users/${username}`)
+      .then(res => res.json())
+      .then(out => {
+        if (!(out.message && out.message === 'Not Found')) {
+          // eslint-disable-next-line
+          UIkit.notification ({
+            message: '<span uk-icon=\'icon: mail; ratio: 1.5\'></span> <span class=\'uk-text-small\'>Thank You, Check your inbox for the invite.</span>',
+            status: 'success',
+            pos: 'bottom-center',
+            timeout: 2000
+          })
+        }
+      })
   }
 }
