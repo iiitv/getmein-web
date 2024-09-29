@@ -9,7 +9,7 @@
 
 ### How to Use
 
-Go to http://getmein.glitch.me to get invitations to join this GitHub organization and the Slack Workspace.
+Go to http://getmeiniiitv.glitch.me to get invitations to join this GitHub organization and the Slack Workspace.
 
 Previously, joining the IIITV Organization was a bit tedious - create an issue in the iiitv/getmein repository and wait for the invite.
 
