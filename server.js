@@ -69,7 +69,7 @@ app.get('/', (_req, res) => {
 })
 
 // Send the mail to the given email
-app.get('/sendmail/:username/:id', (req) => {
+app.get('/sendmail/:username/:id', (req, res) => {
   const { username, id } = req.params
 
   const base64 = urlcrypt.cryptObj({
@@ -89,9 +89,11 @@ app.get('/sendmail/:username/:id', (req) => {
   transporter.sendMail(mailOptions)
     .then((info) => {
       console.log('Email Sent: ' + info.response)
+      res.status(200).send('Email sent')
     })
     .catch((err) => {
       console.error(err)
+      res.status(400).send('Error occured. Please try again later.')
     })
 })
 
@@ -138,6 +140,6 @@ const addMember = data => {
   return promise
 }
 
-const listener = app.listen(process.env.PORT||3000, () => {
+const listener = app.listen(process.env.PORT || 3000, () => {
   console.log(`Your app is listening on port ${listener.address().port}`)
 })
