@@ -23,7 +23,7 @@ var validateEmail = function (emailValue) {
 $('#username').keyup(function () {
   const username = $('#username')
   if (username.val()) {
-    const profile = `https://api.github.com/users/${username.val()}`
+    const profile = `/users/${username.val()}`
     fetch(profile)
       .then(response => response.json())
       .then(data => {

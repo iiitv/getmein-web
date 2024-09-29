@@ -77,7 +77,8 @@
                 id="username"
                 maxlength="39"
                 spellcheck="false"
-                placeholder="GitHub username" required>
+                placeholder="GitHub username" required
+                onkeypress="return event.charCode !== 32">
             </div>
           </div>
           <div style="-webkit-text-fill-color: rgba(50,210,150);" class="uk-margin uk-margin-remove-bottom">
@@ -87,7 +88,8 @@
                 id="email"
                 maxlength="100"
                 spellcheck="false"
-                placeholder="Email" required>
+                placeholder="Email" required
+                onkeypress="return event.charCode !== 32">
             </div>
           </div>
           <span class="uk-text-meta uk-text-warning uk-text-center">PS: Please

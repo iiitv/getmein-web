@@ -97,6 +97,23 @@ app.get('/sendmail/:username/:id', (req, res) => {
     })
 })
 
+app.get('/users/:username', (req, res) => {
+  const { username } = req.params
+  const url = `${githubApi}/users/${username}`
+  axios.get(url, {
+    headers: {
+      'Authorization': `Bearer ${token}`
+    }
+  })
+    .then(response => {
+      res.json(response.data)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(404).send({ error: 'User not found' })
+    })
+})
+
 // Verify the email id through the link, and add as member
 app.get('/verify/:base64', (request, response) => {
   const encryptedData = request.params.base64
